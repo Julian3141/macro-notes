@@ -1,0 +1,9 @@
+build/
+output/
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
+macro-notes/
+src/
+images/

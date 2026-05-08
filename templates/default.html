@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$if(title)$$title$$else$Macro Notes$endif$</title>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$$', '$$'], ['\\(', '\\)']],
+    displayMath: [['$$$$', '$$$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    tags: 'ams',
+    packages: {'[+]': ['color']}
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/main.css">
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+</head>
+<body>
+
+<div class="topbar">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark">
+    <span id="themeIcon">☾</span>
+  </button>
+</div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">$if(title)$$title$$else$Advanced Macroeconomics$endif$</div>
+      <div class="sidebar-subtitle">Lecture notes &middot; Spring 2026</div>
+    </div>
+    $if(toc)$
+    $toc$
+    $endif$
+  </aside>
+
+  <main class="main">
+    <div class="controls">
+      <span class="controls-label">Quick actions:</span>
+      <button class="btn" onclick="toggleAllBoxes(true)">Expand all</button>
+      <button class="btn" onclick="toggleAllBoxes(false)">Collapse all</button>
+    </div>
+
+    $body$
+
+    <div class="footer">
+      Advanced Macroeconomics &middot; Lecture Notes &middot; <a href="https://github.com/Julian3141/macro-notes">Source on GitHub</a>
+    </div>
+  </main>
+</div>
+
+<script>
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon   = document.getElementById('themeIcon');
+const root        = document.documentElement;
+
+function setTheme(theme) {
+  root.setAttribute('data-theme', theme);
+  themeIcon.textContent = theme === 'dark' ? '☀' : '☾';
+  try { localStorage.setItem('theme', theme); } catch(e) {}
+}
+
+themeToggle.addEventListener('click', () => {
+  setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+try {
+  const saved = localStorage.getItem('theme');
+  if (saved) setTheme(saved);
+  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+} catch(e) {}
+
+function toggleAllBoxes(open) {
+  document.querySelectorAll('details.box').forEach(d => d.open = open);
+}
+
+// Active TOC highlighting on scroll
+const headings = document.querySelectorAll('h2[id], h3[id]');
+const tocLinks  = document.querySelectorAll('#TOC a[href^="#"], .toc a[href^="#"]');
+
+function updateActiveTOC() {
+  let current = '';
+  headings.forEach(h => {
+    if (h.getBoundingClientRect().top < 120) current = h.id;
+  });
+  tocLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}
+
+document.addEventListener('scroll', updateActiveTOC, { passive: true });
+</script>
+
+</body>
+</html>

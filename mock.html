@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macro Skript — Ramsey Model</title>
+
+<!-- MathJax for LaTeX rendering -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    tags: 'ams'
+  },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+
+<!-- Fonts: Newsreader (serif body) + Fraunces (display) + JetBrains Mono (code) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Light theme */
+  --bg: #faf8f3;
+  --bg-elevated: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #6b6864;
+  --text-subtle: #a39e96;
+  --border: #e8e3d8;
+  --border-strong: #d4cdb9;
+  --accent: #8a4f2b;          /* warm sienna */
+  --accent-soft: #c8a98a;
+  --selection: #f5e6cb;
+  
+  /* Box colors - light */
+  --box-blue-bg: #f0f4f8;
+  --box-blue-border: #6b91b8;
+  --box-blue-title: #2c4f73;
+  
+  --box-red-bg: #faf0ee;
+  --box-red-border: #b86b65;
+  --box-red-title: #732c2c;
+  
+  --box-green-bg: #f0f4ee;
+  --box-green-border: #7a9968;
+  --box-green-title: #3f5a2e;
+  
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-strong: 0 2px 4px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+}
+
+[data-theme="dark"] {
+  --bg: #1a1816;
+  --bg-elevated: #232120;
+  --text: #ebe7df;
+  --text-muted: #a39e96;
+  --text-subtle: #6b6864;
+  --border: #3a3633;
+  --border-strong: #4a4540;
+  --accent: #d49a6e;
+  --accent-soft: #8a6749;
+  --selection: #4a3825;
+  
+  --box-blue-bg: #1c2530;
+  --box-blue-border: #4a6b8c;
+  --box-blue-title: #a8c5e3;
+  
+  --box-red-bg: #2d1f1d;
+  --box-red-border: #8c4f4a;
+  --box-red-title: #e3aaa3;
+  
+  --box-green-bg: #1f261c;
+  --box-green-border: #5a734a;
+  --box-green-title: #b3cba0;
+  
+  --shadow: 0 1px 2px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-strong: 0 2px 4px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+::selection { background: var(--selection); color: var(--text); }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Newsreader', Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  transition: background 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Layout ---------- */
+.app {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2.5rem 1.75rem 2rem;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.sidebar-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.sidebar-subtitle {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.toc {
+  list-style: none;
+  font-size: 0.92rem;
+}
+
+.toc > li { margin-bottom: 0.15rem; }
+
+.toc a {
+  display: block;
+  padding: 0.35rem 0.6rem;
+  margin-left: -0.6rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  font-family: 'Newsreader', serif;
+  line-height: 1.35;
+}
+
+.toc a:hover {
+  color: var(--text);
+  background: var(--bg-elevated);
+}
+
+.toc a.active {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.toc .toc-h3 a {
+  padding-left: 1.5rem;
+  font-size: 0.86rem;
+  color: var(--text-subtle);
+}
+
+.toc-section-label {
+  font-family: 'Fraunces', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding: 0 0.6rem;
+}
+
+/* ---------- Main content ---------- */
+.main {
+  padding: 4rem 5rem 8rem;
+}
+
+@media (max-width: 1100px) {
+  .main { padding: 3rem 3rem 6rem; }
+}
+
+@media (max-width: 768px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .main { padding: 2rem 1.5rem 4rem; }
+}
+
+/* ---------- Top bar with theme toggle ---------- */
+.topbar {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.theme-toggle {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+/* ---------- Document hero ---------- */
+.hero {
+  margin-bottom: 4rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-family: 'Fraunces', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+  font-variation-settings: "opsz" 144;
+}
+
+.hero-meta {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* ---------- Headings ---------- */
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 2.1rem;
+  margin: 3.5rem 0 1.25rem;
+  font-variation-settings: "opsz" 72;
+}
+
+h2 .section-num {
+  color: var(--accent);
+  font-feature-settings: "tnum";
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.45rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--text);
+}
+
+h3 .section-num {
+  color: var(--text-subtle);
+  font-size: 0.9em;
+  margin-right: 0.4rem;
+  font-feature-settings: "tnum";
+}
+
+h4 {
+  font-size: 1.1rem;
+  margin: 1.75rem 0 0.5rem;
+  color: var(--text);
+  font-style: italic;
+}
+
+/* ---------- Body text ---------- */
+p { margin: 0 0 1.1rem; }
+
+p + p { text-indent: 0; }
+
+strong { font-weight: 600; color: var(--text); }
+em { font-style: italic; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-soft);
+  transition: all 0.15s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+  background: var(--selection);
+}
+
+ul, ol { margin: 0 0 1.25rem 1.5rem; }
+
+li { margin-bottom: 0.4rem; }
+
+li::marker { color: var(--text-subtle); }
+
+/* ---------- Math ---------- */
+mjx-container[display="true"] {
+  margin: 1.5rem 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+mjx-container { color: var(--text); }
+
+/* ---------- Collapsible boxes (the star feature) ---------- */
+.box {
+  margin: 1.75rem 0;
+  border: 1px solid;
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.box:hover { box-shadow: var(--shadow-strong); }
+
+.box.blue { border-color: var(--box-blue-border); background: var(--box-blue-bg); }
+.box.red { border-color: var(--box-red-border); background: var(--box-red-bg); }
+.box.green { border-color: var(--box-green-border); background: var(--box-green-bg); }
+
+.box summary {
+  padding: 0.85rem 1.25rem;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.02rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  user-select: none;
+  letter-spacing: -0.005em;
+  transition: background 0.15s ease;
+}
+
+.box summary::-webkit-details-marker { display: none; }
+
+.box summary::before {
+  content: "▸";
+  font-size: 0.75em;
+  color: currentColor;
+  opacity: 0.55;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  width: 0.8em;
+}
+
+.box[open] summary::before { transform: rotate(90deg); }
+
+.box.blue summary { color: var(--box-blue-title); }
+.box.red summary { color: var(--box-red-title); }
+.box.green summary { color: var(--box-green-title); }
+
+.box summary:hover { filter: brightness(0.97); }
+
+[data-theme="dark"] .box summary:hover { filter: brightness(1.1); }
+
+.box-content {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid;
+  padding-top: 1rem;
+  margin-top: 0.25rem;
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+
+.box.blue .box-content { border-top-color: rgba(107, 145, 184, 0.2); }
+.box.red .box-content { border-top-color: rgba(184, 107, 101, 0.2); }
+.box.green .box-content { border-top-color: rgba(122, 153, 104, 0.2); }
+
+.box-content p:last-child { margin-bottom: 0; }
+
+/* Collapse all button */
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  align-items: center;
+}
+
+.btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Fraunces', serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+.controls-label {
+  font-size: 0.78rem;
+  color: var(--text-subtle);
+  font-style: italic;
+  margin-right: 0.5rem;
+}
+
+/* ---------- Figures ---------- */
+figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ---------- Inline aside / drop cap ---------- */
+.lead::first-letter {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 3.4em;
+  line-height: 0.85;
+  float: left;
+  padding: 0.05em 0.1em 0 0;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 0.75rem 1rem;
+  border-left: 2px solid var(--accent-soft);
+  margin: 1.25rem 0;
+  background: var(--bg-elevated);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ---------- Scrollbar styling ---------- */
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+
+/* ---------- Footer ---------- */
+.footer {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark">
+    <span id="themeIcon">☾</span>
+  </button>
+</div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">Advanced Macroeconomics</div>
+      <div class="sidebar-subtitle">Lecture notes &middot; Spring 2026</div>
+    </div>
+    <div class="toc-section-label">Chapter 1</div>
+    <ul class="toc">
+      <li><a href="#ramsey">Ramsey Model</a></li>
+      <li class="toc-h3"><a href="#motivation">Motivation</a></li>
+      <li class="toc-h3"><a href="#households" class="active">1.1 Households</a></li>
+      <li class="toc-h3"><a href="#setup">— Setup</a></li>
+      <li class="toc-h3"><a href="#utility">— Instantaneous utility</a></li>
+      <li class="toc-h3"><a href="#optimization">— Dynamic optimization</a></li>
+      <li class="toc-h3"><a href="#krr">— Keynes-Ramsey rule</a></li>
+    </ul>
+    <div class="toc-section-label">Chapter 2</div>
+    <ul class="toc">
+      <li><a href="#" style="opacity:0.4">Overlapping Generations</a></li>
+    </ul>
+    <div class="toc-section-label">Chapter 3</div>
+    <ul class="toc">
+      <li><a href="#" style="opacity:0.4">Endogenous Growth</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <div class="hero">
+      <div class="hero-eyebrow">Chapter 1 &middot; § 1.1</div>
+      <h1 class="hero-title">The Ramsey<br>Household</h1>
+      <p class="hero-meta">Intertemporal choice, lifetime utility, and the Keynes-Ramsey rule of optimal consumption.</p>
+    </div>
+
+    <details class="box green" id="motivation" open>
+      <summary>Motivation</summary>
+      <div class="box-content">
+        <p>Analyse the macroeconomic dynamics over time:</p>
+        <ul>
+          <li>What are consequences of epidemic shocks?</li>
+          <li>How does capital accumulation affect the distribution of income?</li>
+        </ul>
+        <p>The model features <strong>intertemporal choices</strong> and <strong>economic shocks</strong>. Limits: no heterogeneity; no shifts in employment.</p>
+      </div>
+    </details>
+
+    <h2 id="households"><span class="section-num">1.1</span>Households</h2>
+
+    <div class="controls">
+      <span class="controls-label">Quick actions:</span>
+      <button class="btn" onclick="toggleAllBoxes(true)">Expand all</button>
+      <button class="btn" onclick="toggleAllBoxes(false)">Collapse all</button>
+    </div>
+
+    <h3 id="setup"><span class="section-num">1.1.1</span>Households: Setup</h3>
+
+    <p class="lead">Mass of one identical and infinitely lived households populate the economy. Each household supplies labor inelastically, holds wealth, and chooses a consumption path that maximizes lifetime utility.</p>
+
+    <ul>
+      <li>$x(i)$ denotes income of household $i \in [0,1]$. Aggregate income: $X = \int_0^1 x(i)\, di$.
+        <ul>
+          <li>Identical households: $x(i) = \bar x \;\forall\, i \implies X = \int_0^1 \bar x\, di = \bar x$.</li>
+        </ul>
+      </li>
+      <li>$L$ denotes household members who all supply one unit of time. Aggregate labor supply $= L \cdot 1$.
+        <ul>
+          <li>$L$ is fully <strong>inelastic</strong> (vertical line in $w$–$L$ graph) and could in principle change over time, i.e. $L(t)$.</li>
+        </ul>
+      </li>
+      <li>$a(t)$ denotes wealth, which is lent to firms.</li>
+      <li>Quantities per household coincide with aggregate quantities.</li>
+      <li>Household income (= aggregate income): $X(t) = w(t) L + r(t) a(t)$, where $r$ is the interest rate, $w$ the wage rate, $t \in [0, \infty]$.</li>
+    </ul>
+
+    <p>Every household maximizes its <strong>lifetime utility</strong>:</p>
+    $$U = \int_0^\infty u\big(C(t)\big) \cdot e^{-\rho t}\, dt \quad \text{with } \rho > 0$$
+
+    <p>where $\rho$ is the time preference rate, $u$ is instantaneous utility, $C$ is consumption. The higher $\rho$, the faster $e^{-\rho t}$ converges to zero.</p>
+
+    <h3 id="utility"><span class="section-num">1.1.2</span>Households: Instantaneous utility</h3>
+
+    <p>Households have the instantaneous utility function (instantaneous meaning that the function describes satisfaction at a single moment, not aggregated over a period):</p>
+
+    $$u\big(C(t)\big) = \frac{C(t)^{1-\sigma} - 1}{1-\sigma} \quad \text{with } \sigma > 0$$
+
+    <p>Alternative formulation (since $\lim_{\sigma \to 1} u(C) = \ln C$):</p>
+    $$u(C) = \begin{cases} \dfrac{C^{1-\sigma}}{1-\sigma} & \text{for } \sigma \neq 1 \\ \ln C & \text{for } \sigma = 1 \end{cases}$$
+
+    <ul>
+      <li>$u$ is compatible with steady-state growth.</li>
+      <li>The lifetime utility (welfare) function implies <strong>CIES</strong>: constant intertemporal elasticity of substitution.</li>
+      <li>Elasticity of marginal utility w.r.t. $C$ is constant:
+        $$\eta_{u'(C), C} = \frac{u''(C) \cdot C}{u'(C)} = \frac{-\sigma C^{-\sigma-1} \cdot C}{C^{-\sigma}} = -\sigma < 0$$
+      </li>
+    </ul>
+
+    <p>The parameter $\sigma$ is a measure of <strong>concavity</strong> of the utility function: the higher $\sigma$, the more concave $u(C)$.</p>
+
+    <details class="box blue">
+      <summary>Example: Lifetime utility over three periods</summary>
+      <div class="box-content">
+        <p>Which consumption profile is preferable: a smooth one (red) or a fluctuating one (blue)?</p>
+        <ul>
+          <li>The <strong>red</strong> consumption profile is preferable as it smooths consumption over time compared to the blue profile.</li>
+          <li>Marginal utility is given by $u'(C) = C^{-\sigma}$ and is therefore decreasing in $C$. The more concave the utility function, the higher the incentive for consumption smoothing.</li>
+          <li>In the blue profile $C = 3$ at $t = 3$ and $C = 1$ at $t = 1$. Thus $u'(3) < u'(1)$. Decreasing consumption at $t = 3$ by 1 and increasing it at $t = 1$ by 1 raises lifetime utility.</li>
+        </ul>
+      </div>
+    </details>
+
+    <h3 id="optimization"><span class="section-num">1.1.3</span>Households: Dynamic optimization</h3>
+
+    <p>Each household solves the following problem to optimize welfare / lifetime utility:</p>
+
+    $$\max_{\{C(t)\}} \int_0^\infty \frac{C(t)^{1-\sigma} - 1}{1-\sigma}\, e^{-\rho t}\, dt$$
+
+    $$\text{s.t.} \quad \dot a(t) = w(t) L + r(t) a(t) - C(t)$$
+
+    <ul>
+      <li>Initial condition: $a(0) = a_0$.</li>
+      <li>Terminal condition (no-Ponzi-game): $\lim_{t \to \infty} e^{-R(t)} a(t) \geq 0$.</li>
+      <li>One <strong>control variable</strong> $C(t)$, one <strong>state variable</strong> $a(t)$.</li>
+      <li>The control variable is freely chosen and could in principle jump; the state variable is more inert (träge).</li>
+    </ul>
+
+    <p>We set up the <strong>Hamiltonian</strong> for this optimization problem:</p>
+    $$H := \underbrace{\frac{C^{1-\sigma} - 1}{1-\sigma}}_{\text{instantaneous objective}} + \underbrace{\lambda}_{\substack{\text{current-value}\\\text{shadow price}}} \cdot \underbrace{(wL + ra - C)}_{\text{RHS of dynamic constraint}}$$
+
+    <p>First-order conditions:</p>
+    $$\frac{\partial H}{\partial C} = C^{-\sigma} - \lambda = 0 \tag{3}$$
+    $$\dot \lambda = -\frac{\partial H}{\partial a} + \rho \lambda = -\lambda r + \rho \lambda \tag{4}$$
+    $$\lim_{t \to \infty} \underbrace{e^{-\rho t}\lambda(t)}_{\text{present-value shadow price}} a(t) = 0 \tag{TVC}$$
+
+    <p>The TVC states that the present value of wealth, valued at the shadow price $\lambda(t)$, must approach zero as time goes to infinity.</p>
+
+    <h3 id="krr"><span class="section-num">1.1.4</span>The Keynes-Ramsey Rule</h3>
+
+    <details class="box red" open>
+      <summary>Key Result: Keynes-Ramsey Rule</summary>
+      <div class="box-content">
+        <p>Optimal consumption obeys the <strong>Keynes-Ramsey rule</strong>:</p>
+        $$\hat C := \frac{\dot C}{C} = \frac{1}{\sigma}(r - \rho)$$
+        <p>Consumption growth $\hat C > 0$ whenever $r > \rho$.</p>
+        <ul>
+          <li>The interest rate $r$ is the premium the household receives for reducing $C$ today by 1 unit and increasing it tomorrow. $r$ is the opportunity cost of consumption today; higher $r$ gives an incentive to postpone $C$.</li>
+          <li>The time preference rate $\rho$ is the premium the household demands to be marginally indifferent between $C$ today and tomorrow. High $\rho$ captures impatience and reduces saving.</li>
+          <li>The intertemporal elasticity of substitution, governed by $\sigma$, captures willingness to substitute consumption across time. Small $\sigma$ implies that $u'(C)$ does not fall strongly as $C$ rises, so the household is highly willing to substitute intertemporally.</li>
+        </ul>
+        <p>If $r > \rho$, it is rational to postpone consumption into the future; the smaller $\sigma$, the stronger this incentive unfolds.</p>
+      </div>
+    </details>
+
+    <details class="box blue">
+      <summary>Derivation of the Keynes-Ramsey Rule</summary>
+      <div class="box-content">
+        <p>Take equation (3), rearrange and differentiate (chain rule):</p>
+        $$\frac{d}{dt}(C^{-\sigma}) = \frac{d}{dt}(\lambda) \iff -\sigma C^{-\sigma-1} \dot C = \dot \lambda$$
+        <p>Plug in (4):</p>
+        $$-\sigma C^{-\sigma-1} \dot C = -\lambda r + \rho \lambda$$
+        <p>Divide by $C^{-\sigma} = \lambda$ (from equation 3):</p>
+        $$\frac{-\sigma C^{-\sigma-1}\dot C}{C^{-\sigma}} = \frac{-\lambda r + \rho \lambda}{\lambda}$$
+        <p>Rearranging:</p>
+        $$-\sigma C^{-1} \dot C = -r + \rho$$
+        $$\hat C = \frac{\dot C}{C} = \frac{1}{\sigma}(r - \rho)$$
+        <p>An alternative method is to take $\ln$ of equation (3) and differentiate.</p>
+      </div>
+    </details>
+
+    <details class="box green">
+      <summary>Macroeconomic equilibrium remark</summary>
+      <div class="box-content">
+        <p>Steady state implies $c := C/Y$ remains constant, hence $\hat C = \hat Y$ in the long run. The KRR demonstrates that $r$ plays a prominent role in determining $\hat C$ and thus $\hat Y$. Since $r = F'(K) - \delta$, anything that affects the marginal product of capital impacts the growth rate. If $F'(K) > 0$ and $F''(K) < 0$, MPK diminishes as capital is accumulated until $r = \rho$. Economic growth is then only possible if $F'(K) - \delta > \rho$.</p>
+      </div>
+    </details>
+
+    <p class="note">This is a mockup of how your script could look as a digital reading experience. The boxes above are <strong>genuinely collapsible</strong> — clicking the title shrinks the page (try it!). The sidebar persists as you scroll. Light/dark mode toggle is in the top-right corner.</p>
+
+    <div class="footer">
+      Mockup &middot; Generated for Claude conversation &middot; <a href="#">Source on GitHub</a>
+    </div>
+  </main>
+</div>
+
+<script>
+// Theme toggle
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const root = document.documentElement;
+
+function setTheme(theme) {
+  root.setAttribute('data-theme', theme);
+  themeIcon.textContent = theme === 'dark' ? '☀' : '☾';
+  try { localStorage.setItem('theme', theme); } catch(e) {}
+}
+
+themeToggle.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// Restore theme preference
+try {
+  const saved = localStorage.getItem('theme');
+  if (saved) setTheme(saved);
+  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
+} catch(e) {}
+
+// Expand/collapse all
+function toggleAllBoxes(open) {
+  document.querySelectorAll('details.box').forEach(d => d.open = open);
+}
+
+// Active TOC highlighting on scroll
+const headings = document.querySelectorAll('h2[id], h3[id]');
+const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+
+function updateActiveTOC() {
+  let current = '';
+  headings.forEach(h => {
+    if (h.getBoundingClientRect().top < 120) current = h.id;
+  });
+  tocLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}
+
+document.addEventListener('scroll', updateActiveTOC, { passive: true });
+</script>
+
+</body>
+</html>
