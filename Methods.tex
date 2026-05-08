@@ -1,0 +1,94 @@
+\subsection{Hamiltonian}
+
+For a generic continuous-time optimal control problem of the form
+\begin{equation}
+    \max_{\{u(t)\}} \int_0^\infty e^{-\rho t} I\bigl(x(t), u(t)\bigr)\,\mathrm{d}t
+    \quad \text{subject to} \quad
+    \dot{x}(t) = g\bigl(x(t), u(t)\bigr), \quad x(0) \text{ given},
+\end{equation}
+we define the \textbf{current-value Hamiltonian}
+\begin{equation}
+    \mathcal{H}(x, u, \lambda) = I(x, u) + \lambda\, g(x, u),
+\end{equation}
+where $\lambda(t)$ is the \emph{costate variable} (the continuous-time shadow value of the
+state $x$). The necessary optimality conditions are
+\begin{align}
+    \mathcal{H}_u &= 0, \label{eq:foc_u}\\
+    \dot{x} &= g(x, u), \label{eq:state}\\
+    \dot{\lambda} &= \rho\lambda - \mathcal{H}_x. \label{eq:costate}
+\end{align}
+Together with the \textbf{transversality condition} (TVC)
+\begin{equation}
+    \lim_{t\to\infty} e^{-\rho t}\,\lambda(t)\,x(t) = 0,
+\end{equation}
+these conditions pin down the unique optimal path.
+
+\paragraph{Household example.}
+For a representative household with CRRA utility maximising
+$\int_0^\infty e^{-\rho t} u(c)\,\mathrm{d}t$ subject to
+$\dot{k} = rk + w - c$, the current-value Hamiltonian is
+$\mathcal{H} = u(c) + \lambda(rk + w - c)$.
+The FOCs yield $\lambda = u'(c)$ and $\dot{\lambda} = \lambda(\rho - r)$, which combine to
+give the continuous-time \textbf{Euler equation}
+\begin{equation}
+    \frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho).
+\end{equation}
+For the Ramsey model, replacing $r$ with the net marginal product of capital $f'(k)-\delta$
+gives the canonical two-dimensional system
+\begin{align}
+    \dot{k} &= f(k) - c - \delta k, \\
+    \frac{\dot{c}}{c} &= \frac{1}{\sigma}\bigl(f'(k) - \delta - \rho\bigr).
+\end{align}
+
+
+\subsection{Solving a System of ODEs}
+
+Consider a linear (or linearised) continuous-time system of the form
+\begin{equation}
+    \dot{\mathbf{z}}(t) = A\,\mathbf{z}(t),
+\end{equation}
+where $\mathbf{z}$ collects deviations of the variables from their steady-state values.
+The solution procedure has four steps.
+
+\begin{enumerate}
+    \item \textbf{Find the eigenvalues.} Solve $\det(A - \mu I) = 0$ for the eigenvalues
+          $\mu_1, \mu_2$ of $A$.
+
+    \item \textbf{Find the eigenvectors.} For each $\mu_i$, solve
+          $(A - \mu_i I)\mathbf{v}_i = \mathbf{0}$ for the eigenvector $\mathbf{v}_i$.
+
+    \item \textbf{Write the general solution.}
+          \begin{equation}
+              \mathbf{z}(t) = \alpha_1\, e^{\mu_1 t}\,\mathbf{v}_1
+                             + \alpha_2\, e^{\mu_2 t}\,\mathbf{v}_2.
+          \end{equation}
+
+    \item \textbf{Apply boundary conditions.} Use the initial condition $\mathbf{z}(0)$ and
+          any terminal/transversality condition to determine $\alpha_1, \alpha_2$.
+\end{enumerate}
+
+\paragraph{Stability.}
+The nature of the eigenvalues determines local dynamics:
+\begin{itemize}
+    \item If all eigenvalues have \emph{negative} real parts, the steady state is
+          \textbf{locally stable} (a node or spiral).
+    \item If the eigenvalues have \emph{opposite} signs ($\mu_1 < 0 < \mu_2$), the steady
+          state is a \textbf{saddle point}.
+\end{itemize}
+
+\paragraph{Saddle-path stability in economic models.}
+In optimisation-based macro models, the state variable $k$ is predetermined (initial
+condition given), while the control variable $c$ is a free ``jump'' variable. The
+optimal solution therefore requires setting the coefficient on the unstable
+eigenvector to zero ($\alpha_2 = 0$, corresponding to $\mu_2 > 0$). This selects the
+unique \textbf{saddle path} — the only trajectory compatible with the TVC — and pins
+down the correct initial value $c_0$.
+
+
+\subsection{random}
+
+inelastically labor supply means a vertival line in a w - L plot (same L for any w). -> this applies to ramsey, solow, romer
+
+
+    \item \textit{Stock vs.\ flow:} A stock is measured at a given point in time; a flow is measured over a period of time. GDP is a flow (``GDP in 2024 was \dots''); the amount of money in your pocket right now is a stock.
+    \item \textit{Side note on labor productivity:} \textit{Average} productivity of labor is $Y/L$, while \textit{marginal} productivity of labor is $\partial Y/\partial L$.

@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{graphicx} 
+\usepackage[left=0.5in, right=0.5in, top=1in, bottom=1in]{geometry}
+\usepackage{float}    % Required for [H] placement
+\setcounter{secnumdepth}{3} 
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\tcbuselibrary{skins, breakable}
+\usepackage{enumitem}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+\usepackage{ocgx2}
+\newcounter{collapsebox}
+
+\newcommand{\collapsiblebox}[3]{%
+  % #1 = title, #2 = color (blue/red/green), #3 = content
+  \stepcounter{collapsebox}%
+  \begin{tcolorbox}[
+      colback=#2!1!white,
+      colframe=#2!40!white,
+      title={\switchocg{box\thecollapsebox}{\textbf{#1} \quad \footnotesize[click to expand/collapse]}},
+      fonttitle=\bfseries
+  ]
+  \begin{ocg}{Box \thecollapsebox}{box\thecollapsebox}{1}% <-- 1 statt 0
+  #3
+  \end{ocg}
+  \end{tcolorbox}
+}
+\begin{document}
+
+\maketitle
+
+\newpage
+\section{Ramsey Model}
+\input{Ramsey}
+\newpage
+
+\section{Overlapping Generations Model}
+\input{OLG}
+\newpage
+
+\section{Endogenous Growth}
+\input{Endogenous Growth}
+\newpage
+
+\section{Methods}
+\input{Methods}
+
+\end{document}
