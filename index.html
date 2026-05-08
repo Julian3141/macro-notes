@@ -183,8 +183,10 @@ window.MathJax = {
         id="toc-structure-of-the-model"><span
         class="toc-section-number">3.3.2</span> Structure of the
         model</a></li>
-        <li><a href="#households-2" id="toc-households-2"><span
-        class="toc-section-number">3.3.3</span> Households: </a></li>
+        <li><a href="#households-ramsey-household-with-two-assets."
+        id="toc-households-ramsey-household-with-two-assets."><span
+        class="toc-section-number">3.3.3</span> Households: <em>Ramsey
+        household with two assets.</em></a></li>
         <li><a href="#final-output-sector"
         id="toc-final-output-sector"><span
         class="toc-section-number">3.3.4</span> Final-output
@@ -261,19 +263,61 @@ window.MathJax = {
     <details class="box green">
     <summary>Motivation</summary>
     <div class="box-content">
-    <pre><code>Analyse the macroeconomic dynamics over time:
-\begin{itemize}
-    \item What are consequences of epidemic shocks?
-    \item How does capital accumulation affect the distribution of income? 
-\end{itemize}
-The model features \textbf{intertemporal choices} and \textbf{economic shocks}. Limits: No heterogeneity; No shifts in employment</code></pre>
+    <pre><code>Analyse the macroeconomic dynamics over time:</code></pre>
+    <ul>
+    <li><p>What are consequences of epidemic shocks?</p></li>
+    <li><p>How does capital accumulation affect the distribution of
+    income?</p>
+    <p>The model features <strong>intertemporal choices</strong> and
+    <strong>economic shocks</strong>. Limits: No heterogeneity; No
+    shifts in employment</p></li>
+    </ul>
     </div>
     </details>
     <h2 data-number="1.1" id="households"><span
     class="header-section-number">1.1</span> Households</h2>
     <h3 data-number="1.1.1" id="households-setup"><span
     class="header-section-number">1.1.1</span> Households: Setup</h3>
-    Mass of one identical and infinitely lived households:
+    <p>Mass of one identical and infinitely lived households:</p>
+    <ul>
+    <li><p><span class="math inline">\(x(i)\)</span> denotes income of
+    household <span class="math inline">\(i\in[0;1]\)</span> <span
+    class="math inline">\(\rightarrow\)</span> Aggregate income: <span
+    class="math inline">\(X=\int_0^1x(i)di\)</span></p></li>
+    <li><p>Identical households: <span
+    class="math inline">\(x(i)=\bar{x}\quad \forall \space i\)</span>
+    <span class="math inline">\(\Longrightarrow\)</span> <span
+    class="math inline">\(X=\int_0^1x(i)di=\int_0^1\bar{x}di=\bar{x}\)</span></p></li>
+    </ul>
+    <p><img src="images/hhincome.png" /></p>
+    <p><em>Individuals and aggregate income with mass one identical
+    households</em></p>
+    <pre><code>    {Note: If mass of households was 2 instead of 1 the aggregate income would be $2\bar{x}$ and there would be twice as much individuals}</code></pre>
+    <ul>
+    <li><p><span class="math inline">\(L\)</span> denotes households
+    members who all supply one unit of time <span
+    class="math inline">\(\rightarrow\)</span> Aggregate labor supply =
+    <span class="math inline">\(L*1\)</span></p></li>
+    <li><p><span class="math inline">\(L\)</span> is fully inelastic
+    (vertical line in w - L graph) and theoretically could also change
+    over time, i.e. <span class="math inline">\(L(t)\)</span></p></li>
+    <li><p><span class="math inline">\(a(t)\)</span> denotes wealth
+    which is lent to firms</p></li>
+    <li><p>Quantities per household coincide with aggregate
+    quantities</p></li>
+    <li><p>Household income ( = aggregate income): <span
+    class="math inline">\(X(t)=w(t)L+r(t)a(t)\)</span> <em>(<span
+    class="math inline">\(r:\)</span> interest rate; <span
+    class="math inline">\(w:\)</span> wage rate; <span
+    class="math inline">\(t\in[0,\infty]\)</span> time)</em></p></li>
+    <li><p>Every household is assumed to <strong>maximize its life-time
+    utility</strong>\ <span class="math display">\[U = \int_{0}^{\infty}
+    u\big[C(t)\big] \cdot e^{-\rho t} \, dt \quad \text{with} \quad \rho
+    &gt; 0\]</span> whereas <span class="math inline">\(\rho\)</span> is
+    the time preference rate, <span class="math inline">\(u\)</span> is
+    the instant utility, <span class="math inline">\(C\)</span> is
+    consumption</p></li>
+    </ul>
     <p>The higher <span class="math inline">\(\rho\)</span>, the faster
     <span class="math inline">\(e^{-pt}\)</span> converges to zero:</p>
     <figure>
@@ -285,39 +329,115 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     <h3 data-number="1.1.2" id="households-instantaneous-utility"><span
     class="header-section-number">1.1.2</span> Households: Instantaneous
     utility</h3>
-    <p>Households have the instantaneous utility function : <span
-    class="math display">\[u\big[C(t)\big] = \frac{C(t)^{1-\sigma} -
-    1}{1 - \sigma} \quad \text{with} \quad \sigma &gt; 0\]</span></p>
-    Alternative formulation : <span class="math display">\[u(C) =
+    <p>Households have the instantaneous utility function
+    <em>(Instantaneous means that the utility function describes
+    satisfaction at a single moment, not aggregated over a period)</em>:
+    <span class="math display">\[u\big[C(t)\big] = \frac{C(t)^{1-\sigma}
+    - 1}{1 - \sigma} \quad \text{with} \quad \sigma &gt; 0\]</span></p>
+    <p>Alternative formulation : <span class="math display">\[u(C) =
     \begin{cases}
     \frac{C^{1-\sigma}}{1-\sigma} &amp; \text{for } \sigma \neq 1 \\
     \ln(C) &amp; \text{for } \sigma = 1
-    \end{cases}\]</span>
-    <p>The of the utility function: The higher <span
-    class="math inline">\(\sigma\)</span>, the more concave is <span
-    class="math inline">\(u(C)\)</span></p>
+    \end{cases}\]</span></p>
+    <ul>
+    <li><span class="math inline">\(u\)</span> is compatible with steady
+    state growth</li>
+    <li>Life-time utility (welfare) functions implies CIES: constant
+    intertemporal elasticity of substitution</li>
+    <li>Elasticity of marginal utility w.r.t. C <em>( <span
+    class="math inline">\(\rightarrow\)</span> <span
+    class="math inline">\(C\)</span> is increased by 1%, how does <span
+    class="math inline">\(u&#39;(C)\)</span> change?)</em> is constant:
+    <span class="math display">\[
+    \eta_{u&#39;(C),C} := \frac{du&#39;(C)/u&#39;(C)}{dC/C} =
+    \frac{du&#39;(C)/dC \cdot C}{u&#39;(C)} =
+    \frac{\textcolor{blue}{u&#39;&#39;(C)} \cdot
+    C}{\textcolor{red}{u&#39;(C)}} =\frac{\textcolor{blue}{-\sigma
+    C^{-\sigma-1}}*C}{\textcolor{red}{C^{-\sigma}}}=-\sigma &lt; 0
+    \]</span> The elasticity is the relative change in <span
+    class="math inline">\(u&#39;\)</span> divided by the relative change
+    in <span class="math inline">\(C\)</span>. </li>
+    </ul>
+    <p>The <strong>parameter <span class="math inline">\(\sigma\)</span>
+    is a measure for concavity</strong> of the utility function: The
+    higher <span class="math inline">\(\sigma\)</span>, the more concave
+    is <span class="math inline">\(u(C)\)</span></p>
     <p><img src="images/instantutility.png" /></p>
+    <ul>
+    <li><p><span class="math inline">\(\sigma = 0
+    \longrightarrow\)</span> marginal utility does not change with
+    consumption, i.e. <span class="math inline">\(u(C)\)</span> is a
+    straight line</p></li>
+    <li><p>Infinite willingness to substitute consumption
+    intertemporally</p></li>
+    <li><p>Consumer is indifferent between different consumption
+    profiles (apart from discounting with <span
+    class="math inline">\(e^{-pt}\)</span> in lifetime utility
+    function)</p></li>
+    <li><p><span class="math inline">\(\sigma &gt; 0
+    \longrightarrow\)</span> marginal utility declines with consumption:
+    <span class="math inline">\(u(C)\)</span> is concave <span
+    class="math inline">\(\rightarrow\)</span> Desire to smooth
+    consumption over time</p></li>
+    </ul>
     <details class="box blue">
     <summary>Example: Life-time utility over three periods</summary>
     <div class="box-content">
     <pre><code>Which consumption profile is preferable: the red or the blue one?</code></pre>
     <p><img src="images/lifetimeconsum.png" /></p>
-    <pre><code>\begin{itemize}
-    \item The red consumption profile is preferable as it smoothens consumption over time compared to the blue profile.
-    \item Marginal utility is given by: $u&#39;(C)=C^{-\sigma}$ and thus, is decreasing in $C$. The more concave the utility function the higher the incentive for consumption smoothing.
-    \item In the blue profile consumption at $t=3$ is $C=3$ and at $t=1$ it is $C=1$; Thus we have $u&#39;(3)&lt;u&#39;(1)$\\ $\rightarrow $ Decreasing consumption in $t=3$ by $1$ and increasing consumption in $t=1$ by $1$ increases life-time utility
-\end{itemize}</code></pre>
+    <ul>
+    <li>The red consumption profile is preferable as it smoothens
+    consumption over time compared to the blue profile.</li>
+    <li>Marginal utility is given by: <span
+    class="math inline">\(u&#39;(C)=C^{-\sigma}\)</span> and thus, is
+    decreasing in <span class="math inline">\(C\)</span>. The more
+    concave the utility function the higher the incentive for
+    consumption smoothing.</li>
+    <li>In the blue profile consumption at <span
+    class="math inline">\(t=3\)</span> is <span
+    class="math inline">\(C=3\)</span> and at <span
+    class="math inline">\(t=1\)</span> it is <span
+    class="math inline">\(C=1\)</span>; Thus we have <span
+    class="math inline">\(u&#39;(3)&lt;u&#39;(1)\)</span>\ $$ Decreasing
+    consumption in <span class="math inline">\(t=3\)</span> by <span
+    class="math inline">\(1\)</span> and increasing consumption in <span
+    class="math inline">\(t=1\)</span> by <span
+    class="math inline">\(1\)</span> increases life-time utility</li>
+    </ul>
     </div>
     </details>
     <h3 data-number="1.1.3"
     id="households-dynamic-optimization-problem"><span
     class="header-section-number">1.1.3</span> Households: Dynamic
     optimization problem</h3>
-    Each household solves the following problem to optimize welfare /
-    life-time utility: [ <em>{{C(t)}} </em>{0}^{} e^{-t} dt ] [ (t) =
-    w(t)L + r(t)a(t) - C(t) ]
-    \ We set up the for our optimization problem: <span
-    class="math display">\[H := \underbrace{\frac{C^{1-\sigma} - 1}{1 -
+    <p>Each household solves the following problem to optimize welfare /
+    life-time utility:</p>
+    <p><span class="math display">\[
+    \max_{\{C(t)\}} \int_{0}^{\infty} \frac{C(t)^{1-\sigma} - 1}{1 -
+    \sigma} e^{-\rho t} dt
+    \]</span></p>
+    <p><span class="math display">\[
+    \text{s.t. } \dot{a}(t) = w(t)L + r(t)a(t) - C(t)
+    \]</span></p>
+    <ul>
+    <li>Initial condition: <span class="math inline">\(a(0) =
+    a_0\)</span></li>
+    <li>Terminal condition (no ponzi game condition): <span
+    class="math inline">\(\lim_{t \to \infty} e^{-R(t)} a(t) \geq
+    0\)</span></li>
+    <li>We have one control variable <span
+    class="math inline">\(C(t)\)</span>, and one state variable <span
+    class="math inline">\(a(t)\)</span></li>
+    <li>The control variable is chosen by the household, the state
+    variable depends on the control variable. While the control variable
+    can be freely chosen and could theoretically jump, the state
+    variable does not and is more inert <em>(träge)</em>.</li>
+    <li>The <em>flow budget constraint</em> is a <strong>first order,
+    linear, differential equation</strong>.</li>
+    </ul>
+    <p>\ We set up the <strong>Hamiltonian function</strong> for our
+    optimization problem: <span class="math display">\[H :=
+    \underbrace{\frac{C^{1-\sigma} - 1}{1 -
     \sigma}}_{\substack{\text{instantaneous objective} \\
     \text{function}}} + \underset{\substack{\text{current value} \\
     \text{shadow price}}}{\lambda} \quad \underbrace{(wL + ra -
@@ -328,17 +448,53 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     x}=\rho \lambda\)</span>): <span
     class="math display">\[\begin{align}
         \frac{\partial H}{\partial C} &amp;= C^{-\sigma} - \lambda = 0
-    \tag{3} \\[10pt]
+    \tag{3} \
+
+    $$10pt]
         \dot{\lambda} &amp;= -\frac{\partial H}{\partial a} + \rho
     \lambda = -\lambda r + \rho \lambda \tag{4} \\[10pt]
         \lim_{t \to \infty} &amp;\underbrace{e^{-\rho t}
     \lambda(t)}_{\substack{\text{present-value} \\ \text{shadow price}}}
     a(t) = 0 \tag{TVC}
-    \end{align}\]</span>
-    of optimal consumption: <span
+    \end{align}\]</span></p>
+    <ul>
+    <li>The TVC states that present value of wealth, valued at shadow
+    price <span class="math inline">\(\lambda(t)\)</span>, at infinite
+    time must approach zero</li>
+    </ul>
+    <p><strong>Keynes-Ramsey rule (KRR)</strong> of optimal consumption:
+    <span
     class="math inline">\(\hat{C}:=\frac{\dot{C}}{C}=\frac{1}{\sigma}(r-\rho)\)</span>
     \Growth rate <span class="math inline">\(\hat{C} &gt; 0\)</span>,
-    whenever <span class="math inline">\(r&gt;\rho\)</span>
+    whenever <span class="math inline">\(r&gt;\rho\)</span></p>
+    <ul>
+    <li><strong>The interest rate <span
+    class="math inline">\(r\)</span></strong> is the premium the
+    household receives for reducing <span
+    class="math inline">\(C\)</span> today by <span
+    class="math inline">\(1\)</span> unit and increasing it tomorrow by
+    <span class="math inline">\(1\)</span> unit, i.e. <span
+    class="math inline">\(r\)</span> is the opportunity cost of
+    consumption today. <strong>Higher r gives incentive to postpone
+    C</strong> so that higher level of <span
+    class="math inline">\(C\)</span> can be financed tomorrow.</li>
+    <li><strong>The time preference rate <span
+    class="math inline">\(\rho\)</span></strong> is the premium the
+    household demand to be marginally indifferent between <span
+    class="math inline">\(C\)</span> today and tomorrow. <strong>High
+    <span class="math inline">\(\rho\)</span> captures impatience and
+    reduces <span class="math inline">\(C\)</span></strong>, i.e. the
+    household wished to consume today rather than tomorrow.</li>
+    <li><strong>The intertemporal elasticity of substitution <span
+    class="math inline">\(\sigma\)</span> </strong>captures the
+    households willingness to substitute consumption intertemporally.
+    Small <span class="math inline">\(\sigma\)</span> implies that <span
+    class="math inline">\(u&#39;(C)\)</span> does not fall strongly as
+    <span class="math inline">\(C\)</span> increases, i.e. the household
+    has a high willingness to substitute consumption intertemporally and
+    <span class="math inline">\(r&gt;\rho\)</span> unfolds strong
+    incentives to substitute consumption intertemporally</li>
+    </ul>
     <p><span class="math inline">\(\longrightarrow\)</span> If <span
     class="math inline">\(r &gt;\rho\)</span> it seems rational to
     postpone consumption into the future; The smaller <span
@@ -402,10 +558,10 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     class="header-section-number">1.1.5</span> Households:
     Transversality condition (TVC) vs. No-Ponzi-Game condition
     (NPGC)</h3>
-    Shadow value of wealth in present value terms is: <span
-    class="math inline">\(e^{-\rho t}\lambda(t)a(t)\)</span> and must
-    approach zero for <span class="math inline">\(t\rightarrow
-    \infty:\)</span> <span
+    <p><strong>Transversality condition:</strong> Shadow value of wealth
+    in present value terms is: <span class="math inline">\(e^{-\rho
+    t}\lambda(t)a(t)\)</span> and must approach zero for <span
+    class="math inline">\(t\rightarrow \infty:\)</span> <span
     class="math display">\[lim_{t\rightarrow\infty}e^{-\rho
     t}\lambda(t)a(t)=0\]</span> with <span
     class="math inline">\(\lambda(t)=u&#39;(C)\)</span>: <span
@@ -413,9 +569,15 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     t}u&#39;(C)a(t)=0 \quad (TVC\#1)\]</span> with $(t)=(0)e^{(-r)t} $:
     <span class="math display">\[\longrightarrow
     lim_{t\rightarrow\infty}e^{-r t}\lambda(0)a(t)=0 \quad
-    (TVC\#2)\]</span>
-    <p> Wealth in the “far future” cannot have negative present value,
-    i.e. <span
+    (TVC\#2)\]</span></p>
+    <ul>
+    <li>TVC#1 is violated if its greater than zero, which means that
+    life-time utility can be increased by saving less.</li>
+    <li>TVC#2 is violated if the No-Ponzi-Game condition is
+    violated</li>
+    </ul>
+    <p><strong>No-Ponzi-Game condition:</strong> Wealth in the “far
+    future” cannot have negative present value, i.e. <span
     class="math inline">\(lim_{t\rightarrow\infty}e^{-rt}a(t)&lt;0\)</span>
     is excluded: <span
     class="math display">\[lim_{t\rightarrow\infty}e^{-rt}a(t)\geq0
@@ -428,8 +590,10 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     <details class="box blue">
     <summary>Difference between TVC and NPGC</summary>
     <div class="box-content">
-    <p>The is an optimality condition (no wealth when you die) \</p>
-    <p>The is an external condition (you cannot die with debt)</p>
+    <p>The <strong>TVC</strong> is an optimality condition (no wealth
+    when you die) \</p>
+    <p>The <strong>NPGC</strong> is an external condition (you cannot
+    die with debt)</p>
     </div>
     </details>
     <h2 data-number="1.2" id="firms"><span
@@ -455,18 +619,37 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     r + \delta = \alpha A K^{\alpha - 1} L^{1 - \alpha} = \alpha
     \frac{Y}{K}
     \quad \text{(user cost of capital)}
-    \end{equation}\]</span> This is similar to the Solow model; Final
-    output is chosen as numeraire, i.e. its price is set equal to unity
-    <span class="math inline">\((p_Y=1)\)</span>.</p>
+    \end{equation}\]</span> <strong>Note:</strong> This is similar to
+    the Solow model; Final output is chosen as numeraire, i.e. its price
+    is set equal to unity <span
+    class="math inline">\((p_Y=1)\)</span>.</p>
     <details class="box blue">
     <summary>Derivation of the FOCs for the firm</summary>
     <div class="box-content">
     <p>The firm maximizes profit <span class="math inline">\(\pi = A
     K^\alpha L^{1-\alpha} - wL - (r + \delta)K\)</span>. The First-Order
     Conditions (FOCs) are:</p>
-    Due to Constant Returns to Scale (CRS), total income is exhausted by
-    factor payments \(<span class="math inline">\(Y = wL +
-    (r+\delta)K\)</span>):
+    <ul>
+    <li><strong>Labor:</strong> <span
+    class="math inline">\(\frac{\partial \pi}{\partial L} = (1 - \alpha)
+    A K^\alpha L^{-\alpha} - w = 0 \implies w = (1 - \alpha)
+    \frac{Y}{L}\)</span></li>
+    <li><strong>Capital:</strong> <span
+    class="math inline">\(\frac{\partial \pi}{\partial K} = \alpha A
+    K^{\alpha-1} L^{1-\alpha} - (r + \delta) = 0 \implies r + \delta =
+    \alpha \frac{Y}{K}\)</span></li>
+    </ul>
+    <p><strong>Factor Shares:</strong> Due to Constant Returns to Scale
+    (CRS), total income is exhausted by factor payments \(<span
+    class="math inline">\(Y = wL + (r+\delta)K\)</span>):</p>
+    <ul>
+    <li><strong>Labor Share:</strong> <span
+    class="math inline">\(\frac{wL}{Y} = \frac{(1-\alpha)Y}{Y} = 1 -
+    \alpha\)</span></li>
+    <li><strong>Capital Share:</strong> <span
+    class="math inline">\(\frac{(r+\delta)K}{Y} = \frac{\alpha Y}{Y} =
+    \alpha\)</span></li>
+    </ul>
     <p>Note: Land is implicitly included in the capital share <span
     class="math inline">\(\alpha\)</span>.</p>
     </div>
@@ -486,31 +669,67 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     id="market-equilibrium-and-national-income"><span
     class="header-section-number">1.3</span> Market equilibrium and
     national income</h2>
-    \\ The general equilibrium consist of paths for quantities <span
+    <p><strong>Definition of general equilibrium:</strong>\\ The general
+    equilibrium consist of paths for quantities <span
     class="math inline">\([Y(t),K(t),a(t),C(t)]_{t=0}^{\infty}\)</span>
     and prices <span
     class="math inline">\([w(t),r(t)]_{t=0}^{\infty}\)</span>, such
-    that:
-    <p> <span class="math inline">\(X\)</span> equals aggregate
-    production net of depreciation, which is shown here: [ X = wL + rK =
-    <em>{} L + </em>{} K = Y - K ]</p>
+    that:</p>
+    <ul>
+    <li>Final good producers maximize profits <span
+    class="math inline">\(\pi = Y - wL - (r + \delta)K\)</span> at each
+    <span class="math inline">\(t \in [0, \infty]\)</span></li>
+    <li>HH maximize life-time utility <span class="math inline">\(U =
+    \int_{0}^{\infty} u(C)e^{-\rho t}dt\)</span></li>
+    <li>Capital market clears, i.e. <span class="math inline">\(a(t) =
+    K(t)\)</span> at each <span class="math inline">\(t \in [0,
+    \infty]\)</span></li>
+    <li>Labor market clears, i.e. <span class="math inline">\(L^{S}(t) =
+    L^{D}(t)\)</span> at each <span class="math inline">\(t \in [0,
+    \infty]\)</span></li>
+    <li>Goods market clears, i.e. <span class="math inline">\(Y(t) =
+    I(t) + C(t)\)</span> at each <span class="math inline">\(t \in [0,
+    \infty]\)</span></li>
+    </ul>
+    <p><strong>National income</strong> <span
+    class="math inline">\(X\)</span> equals aggregate production net of
+    depreciation, which is shown here: [ X = wL + rK = <em>{} L +
+    </em>{} K = Y - K $$</p>
     <h3 data-number="1.3.1" id="market-equilibrium-illustration"><span
     class="header-section-number">1.3.1</span> Market equilibrium
     illustration</h3>
     <p><img src="images/dynamics.png" /></p>
-    Interpretations:
+    <p>Interpretations:</p>
+    <ul>
+    <li><strong>Robinson-Crusoe economy:</strong> Consumer-producer
+    household accumulates output not consumed and thereby builds up a
+    stock of physical capital. Stock of capital is used to produce
+    output.</li>
+    <li><strong>Market economy:</strong> HH accumulate wealth (measured
+    in terms of <span class="math inline">\(Y\)</span>), which is rented
+    out to firms. Firms employ this capital in the production of final
+    output.</li>
+    </ul>
     <h2 data-number="1.4" id="dynamics"><span
     class="header-section-number">1.4</span> Dynamics</h2>
     <details class="box red">
     <summary>Definition: Steady State and Balanced Growth Path</summary>
     <div class="box-content">
-    <p>A is a situation in which all relevant economic variables are
-    constant over time, i.e., for any variable <span
-    class="math inline">\(x_t\)</span>, we have <span
+    <p>A <strong><em>steady state</em></strong> is a situation in which
+    all relevant economic variables are constant over time, i.e., for
+    any variable <span class="math inline">\(x_t\)</span>, we have <span
     class="math inline">\(x_{t+1} = x_t\)</span> and <span
-    class="math inline">\(\dot{x}=0\)</span>. \\ A is a situation in
-    which the of all relevant economic variables are constant over time,
-    i.e. <span class="math inline">\(\hat{x}=const.&gt;0\)</span></p>
+    class="math inline">\(\dot{x}=0\)</span>. \\ A <strong><em>balanced
+    growth path</em></strong> is a situation in which the <strong>growth
+    rates</strong> of all relevant economic variables are constant over
+    time, i.e. <span
+    class="math inline">\(\hat{x}=const.&gt;0\)</span></p>
+    <ul>
+    <li>A <em>zero-growth steady state</em> is referred to simply as a
+    <em>steady state</em>.</li>
+    <li>A <em>positive-growth steady state</em> is referred to as a
+    <em>balanced growth path</em>.</li>
+    </ul>
     </div>
     </details>
     <p>The dynamics of the economy are described by: <span
@@ -526,7 +745,8 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     <div class="box-content">
     <p>The system is derived by combining the household’s optimization
     with the firm’s production:</p>
-    <p> The standard Keynes-Ramsey Rule for CRRA utility is: <span
+    <p><strong>1. The Consumption Euler Equation (KRR):</strong> The
+    standard Keynes-Ramsey Rule for CRRA utility is: <span
     class="math display">\[\frac{\dot{C}}{C} = \frac{1}{\sigma}(r -
     \rho)\]</span> From the firm’s FOC, we know the real interest rate
     is the marginal product of capital net of depreciation:\ <span
@@ -535,7 +755,16 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     this into the KRR: <span class="math display">\[\dot{C} =
     \frac{C}{\sigma} \left( \alpha K^{\alpha-1} L^{1-\alpha} - \delta -
     \rho \right)\]</span></p>
-    From the aggregate resource constraint (Slide 71 logic):
+    <p><strong>2. The Equation of Motion for Capital:</strong> From the
+    aggregate resource constraint (Slide 71 logic):</p>
+    <ol type="1">
+    <li>Output Identity: <span class="math inline">\(Y = C +
+    I\)</span></li>
+    <li>Capital Accumulation: <span class="math inline">\(\dot{K} = I -
+    \delta K\)</span></li>
+    <li>Production Function: <span class="math inline">\(Y = K^{\alpha}
+    L^{1-\alpha}\)</span></li>
+    </ol>
     <p>Combining these gives <span class="math inline">\(\dot{K} = Y - C
     - \delta K\)</span>. Substituting the production function: <span
     class="math display">\[\dot{K} = K^{\alpha} L^{1-\alpha} - \delta K
@@ -548,8 +777,19 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     <details class="box blue">
     <summary>Alternative (market economy) version of the $\dot{K}$ equation</summary>
     <div class="box-content">
-    \ Following the national accounting identities and budget
-    constraints:
+    <p>\ Following the national accounting identities and budget
+    constraints:</p>
+    <ul>
+    <li><strong>Wealth Equilibrium:</strong> <span
+    class="math inline">\(a(t) = K(t) \implies \dot{a}(t) =
+    \dot{K}(t)\)</span></li>
+    <li><strong>Household Budget:</strong> <span
+    class="math inline">\(\dot{a}(t) = w(t)L + r(t)a(t) -
+    C(t)\)</span></li>
+    <li><strong>Accounting Identity:</strong> Total factor income equals
+    net output: <span class="math inline">\(w(t)L + r(t)K(t) = Y(t) -
+    \delta K(t)\)</span></li>
+    </ul>
     <p>Substituting the identity into the budget constraint gives: <span
     class="math display">\[\dot{K} = \underbrace{Y(t) - \delta K(t)}_{wL
     + rK} - C(t)\]</span> Plugging in the production function <span
@@ -588,42 +828,69 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     L\]</span> This is a vertical line in the <span
     class="math inline">\((K,C)\)</span>-plane at <span
     class="math inline">\(K = \tilde{K}\)</span>.</p>
-    <p> Substitute <span class="math inline">\(\tilde{K}\)</span> into
-    the <span class="math inline">\(\dot{K}=0\)</span> equation: <span
+    <p><strong>3. Steady State Consumption:</strong> Substitute <span
+    class="math inline">\(\tilde{K}\)</span> into the <span
+    class="math inline">\(\dot{K}=0\)</span> equation: <span
     class="math display">\[\tilde{C} = \tilde{K}^{\alpha} L^{1-\alpha} -
     \delta \tilde{K}\]</span></p>
-    If <span class="math inline">\(L\)</span> or <span
+    <p><strong>Extensions (Balanced Growth Path):</strong> If <span
+    class="math inline">\(L\)</span> or <span
     class="math inline">\(A\)</span> grow, we define variables in
     efficiency units <span class="math inline">\(k =
     \frac{K}{AL}\)</span> and <span class="math inline">\(c =
-    \frac{C}{AL}\)</span>:
+    \frac{C}{AL}\)</span>:</p>
+    <ul>
+    <li><strong>With <span class="math inline">\(L\)</span> growth
+    (<span class="math inline">\(n\)</span>):</strong> Replace <span
+    class="math inline">\(\delta\)</span> with <span
+    class="math inline">\((\delta + n)\)</span> in the <span
+    class="math inline">\(\tilde{K}\)</span> formula.</li>
+    <li><strong>With <span class="math inline">\(A\)</span> growth
+    (<span class="math inline">\(g\)</span>):</strong> Replace <span
+    class="math inline">\(\rho\)</span> with <span
+    class="math inline">\((\rho + \sigma g)\)</span> and <span
+    class="math inline">\(\delta\)</span> with <span
+    class="math inline">\((\delta + n + g)\)</span>.</li>
+    </ul>
     </div>
     </details>
     <details class="box blue">
     <summary>Typical errors with respect to steady state and balanced growth path</summary>
     <div class="box-content">
-    <p> A steady state (<span class="math inline">\(\dot{x} =
-    0\)</span>) and a balanced growth path (<span
-    class="math inline">\(\hat{x} = \text{const.} &gt; 0\)</span>) are
-    not the same. A steady state is a of a BGP where the constant growth
-    rate happens to be zero.</p>
-    <p> In models with technological progress (<span
+    <p><strong>1. Confusing steady state with BGP:</strong> A steady
+    state (<span class="math inline">\(\dot{x} = 0\)</span>) and a
+    balanced growth path (<span class="math inline">\(\hat{x} =
+    \text{const.} &gt; 0\)</span>) are not the same. A steady state is a
+    <em>special case</em> of a BGP where the constant growth rate
+    happens to be zero.</p>
+    <p><strong>2. Assuming a steady state exists under technological
+    progress:</strong> In models with technological progress (<span
     class="math inline">\(\dot{A}/A = x &gt; 0\)</span>), a classical
     steady state generally does not exist. Assuming <span
     class="math inline">\(\tilde{K} = \text{const.}\)</span> yields a
     contradiction, since the solution for <span
     class="math inline">\(\tilde{K}\)</span> depends on <span
     class="math inline">\(AL\)</span>, which is growing.</p>
-
-    <p> The correct way to rule out a steady state is to assume it
-    exists, derive what it implies, and show this leads to a
-    contradiction - not to simply assert it does not exist.</p>
+    <p><strong>3. Forgetting what is constant in each
+    concept:</strong></p>
+    <ul>
+    <li>Steady state: the <em>level</em> is constant (<span
+    class="math inline">\(\dot{x} = 0\)</span>)</li>
+    <li>BGP: the <em>growth rate</em> is constant (<span
+    class="math inline">\(\hat{x} = \text{const.} &gt; 0\)</span>),
+    while the level is still growing</li>
+    </ul>
+    <p><strong>4. Skipping the proof when showing non-existance of a
+    steady state</strong> The correct way to rule out a steady state is
+    to assume it exists, derive what it implies, and show this leads to
+    a contradiction - not to simply assert it does not exist.</p>
     </div>
     </details>
     <h2 data-number="1.5" id="phase-diagram"><span
     class="header-section-number">1.5</span> Phase Diagram</h2>
-    <p>The phase diagram illustrates the uniqueness of the . It maps the
-    joint dynamics of capital <span class="math inline">\(K\)</span> and
+    <p>The phase diagram illustrates the uniqueness of the
+    <strong>Equilibrium Growth Path (EGP)</strong>. It maps the joint
+    dynamics of capital <span class="math inline">\(K\)</span> and
     consumption <span class="math inline">\(C\)</span> to show how the
     economy converges to a long-run equilibrium. The equilibrium growth
     path is characterized by the intersection of the <span
@@ -634,18 +901,122 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     class="math inline">\(\tilde{K}\)</span>.</p>
     <p><img src="images/phase.png" /></p>
     <p><em>Phase Diagram of the Ramsey Model</em></p>
+    <ul>
+    <li><p><strong>Unique Initial Consumption:</strong> Given a
+    pre-determined initial capital stock <span
+    class="math inline">\(K(0) = K_0\)</span>, there is only one unique
+    choice for initial consumption <span
+    class="math inline">\(C(0)\)</span> such that the economy evolves
+    along the unique EGP towards the steady state.</p></li>
+    <li><p><strong>Saddle Point Stability:</strong> The steady state is
+    <em>saddle point stable</em> (or conditionally stable). The system
+    only converges if the initial <span
+    class="math inline">\(C(0)\)</span> is chosen precisely on the
+    stable manifold (the saddle path). Any initial value not on this
+    path causes the system to diverge.</p></li>
+    <li><p><strong>Divergence Paths and Boundary States:</strong> The
+    <span class="math inline">\(\dot{K}=0\)</span> locus is an inverted
+    parabola starting at <span class="math inline">\((0,0)\)</span> and
+    ending at <span class="math inline">\((\bar{K}, 0)\)</span>, where
+    <span class="math inline">\(\bar{K}\)</span> is the maximum
+    sustainable capital stock. While <span
+    class="math inline">\((0,0)\)</span> and <span
+    class="math inline">\((\bar{K},0)\)</span> are technically steady
+    states, they are ignored as they imply zero consumption.</p></li>
+    <li><p><strong>Excessive Saving Logic:</strong> If initial
+    consumption <span class="math inline">\(C(0)\)</span> is set
+    <strong>too low</strong> (below the saddle path), the household
+    saves an excessive portion of its income. This leads to:</p></li>
+    <li><p>Rapid capital accumulation in the short run.</p></li>
+    <li><p>Eventually, the marginal productivity of capital falls due to
+    diminishing returns.</p></li>
+    <li><p>Because the household is not consuming enough to satisfy the
+    Transversality Condition (TVC), they continue to accumulate capital
+    until it reaches the point <span class="math inline">\((\bar{K},
+    0)\)</span>, where all production is used simply to replace
+    depreciating capital (<span class="math inline">\(\delta K =
+    Y\)</span>), leaving nothing left for consumption.</p>
+    <p><em>Note: This path is ruled out by the household’s optimization
+    because it violates the Transversality Condition; it is not optimal
+    to accumulate capital forever and never consume it.</em></p></li>
+    </ul>
     <details class="box blue">
     <summary>Why Exactly One Trajectory? Ruling Out All Others</summary>
     <div class="box-content">
-    <p>The phase diagram contains trajectories starting from <span
-    class="math inline">\(K_0\)</span>, but only survives the
-    household’s optimality conditions. The argument has two parts:
-    trajectories the saddle path are ruled out by the TVC, trajectories
-    the saddle path are ruled out either by the TVC or by
-    feasibility.</p>
-
-
-
+    <p>The phase diagram contains <em>infinitely many</em> trajectories
+    starting from <span class="math inline">\(K_0\)</span>, but only
+    <strong>one</strong> survives the household’s optimality conditions.
+    The argument has two parts: trajectories <strong>above</strong> the
+    saddle path are ruled out by the TVC, trajectories
+    <strong>below</strong> the saddle path are ruled out either by the
+    TVC or by feasibility.</p>
+    <p><em>Trajectories above the saddle path (initial <span
+    class="math inline">\(C(0)\)</span> too high).</em></p>
+    <ul>
+    <li>Initial consumption is so high that the household consumes more
+    than what is sustainable. Capital is run down (or grows too slowly)
+    while consumption keeps rising.</li>
+    <li>The trajectory crosses the <span class="math inline">\(\dot K =
+    0\)</span> locus and heads toward the <span
+    class="math inline">\(C\)</span>-axis: <span class="math inline">\(K
+    \to 0\)</span>, <span class="math inline">\(C\)</span> keeps
+    rising.</li>
+    <li>At some finite time, <span class="math inline">\(K\)</span> hits
+    zero and <span class="math inline">\(C\)</span> would have to jump
+    down discontinuously, since with no capital there is no production.
+    <strong>This violates the requirement that <span
+    class="math inline">\(C(t)\)</span> be a continuous function of
+    time</strong> (jumps in consumption are precluded by the
+    optimization).</li>
+    <li>Equivalently: the present-value shadow price of wealth <span
+    class="math inline">\(e^{-\rho t}\lambda(t) a(t)\)</span> becomes
+    negative or fails to converge to zero, violating the TVC.</li>
+    </ul>
+    <p><em>Trajectories below the saddle path (initial <span
+    class="math inline">\(C(0)\)</span> too low).</em></p>
+    <ul>
+    <li>The household saves an excessive portion of income. Capital
+    accumulates rapidly while consumption stays low.</li>
+    <li>Eventually the marginal product of capital falls below <span
+    class="math inline">\(\rho + \delta\)</span> due to diminishing
+    returns. The economy is now in the <strong>dynamically inefficient
+    region</strong>: it accumulates capital that yields lower returns
+    than what discounting demands.</li>
+    <li>The trajectory drifts toward <span class="math inline">\((\bar
+    K, 0)\)</span>, where all output is used to replace depreciation
+    (<span class="math inline">\(\delta K = Y\)</span>) and consumption
+    is permanently zero.</li>
+    <li>Although feasible, this path <strong>violates the TVC</strong>:
+    <span class="math inline">\(\lim_{t\to\infty} e^{-\rho t}\lambda(t)
+    a(t) &gt; 0\)</span>, meaning the household dies with positive
+    wealth. Lifetime utility could be raised by consuming more, so this
+    path is not optimal.</li>
+    </ul>
+    <p><em>Optimal unique <span
+    class="math inline">\(C(0)\)</span>.</em></p>
+    <ul>
+    <li>Only the saddle path satisfies (i) continuity of <span
+    class="math inline">\(C(t)\)</span>, (ii) feasibility (<span
+    class="math inline">\(K \geq 0\)</span> at all times), and (iii) the
+    TVC. This pins down a unique <span
+    class="math inline">\(C(0)\)</span> for any given <span
+    class="math inline">\(K_0\)</span>. The saddle path is therefore the
+    <strong>balanced growth path</strong>: the household’s optimization
+    <em>selects</em> it from the continuum of feasible
+    trajectories.</li>
+    <li><em>Mathematical reason:</em> Linearizing the dynamic system
+    around the steady state yields two eigenvalues of opposite sign
+    (<span class="math inline">\(\mu_1 &lt; 0 &lt; \mu_2\)</span>). The
+    general solution is <span class="math inline">\(z(t) = \alpha_1
+    e^{\mu_1 t} v_1 + \alpha_2 e^{\mu_2 t} v_2\)</span>. The TVC forces
+    <span class="math inline">\(\alpha_2 = 0\)</span> (otherwise the
+    unstable mode explodes), and <span
+    class="math inline">\(\alpha_1\)</span> is then pinned down by the
+    initial condition <span class="math inline">\(K(0) = K_0\)</span>.
+    Saddle-path stability is thus a direct consequence of having one
+    predetermined state (<span class="math inline">\(K\)</span>) and one
+    free jump variable (<span class="math inline">\(C\)</span>).</li>
+    </ul>
     </div>
     </details>
     <details class="box blue">
@@ -670,21 +1041,47 @@ The model features \textbf{intertemporal choices} and \textbf{economic shocks}. 
     class="math display">\[K(0) = K_0,\; K(t) \ge 0\]</span> The
     equation for <span class="math inline">\(\dot{K}\)</span> results
     from the resource constraint <span class="math inline">\(Y-\delta
-    K=\dot{K}+C\)</span> \\ for this problem gives us: [ H := + (K^{}
-    L^{1-} - K - C) ]</p>
-    <p>[ H_{C} = C^{-} - = 0 ]</p>
-    [ = -H_{K} + = -K^{} L^{1-} + + ]\\ is: [ = ( K^{} L^{1-} - - )]\\
-    The is by the , the <span class="math inline">\((\dot{K} =
-    K^{\alpha} L^{1-\alpha} - \delta K - C)\)</span> and the and <span
+    K=\dot{K}+C\)</span> \\ <strong>Setting up the Hamiltonian</strong>
+    for this problem gives us:</p>
+    <p><span class="math display">\[ H := \frac{C^{1-\sigma} - 1}{1 -
+    \sigma} + \mu (K^{\alpha} L^{1-\alpha} - \delta K - C) \]</span></p>
+    <p><span class="math display">\[ H_{C} = C^{-\sigma} - \mu = 0
+    \]</span></p>
+    <p><span class="math display">\[ \dot{\mu} = -H_{K} + \rho \mu =
+    -\mu \alpha K^{\alpha-1} L^{1-\alpha} + \mu \delta + \rho \mu
+    \]</span></p>
+    <p>\\ <strong>The implied Keynes-Ramsey-Rule</strong> is:</p>
+    <p><span class="math display">\[ \frac{\dot{C}}{C} =
+    \frac{1}{\sigma} \left( \alpha K^{\alpha-1} L^{1-\alpha} - \delta -
+    \rho \right)\]</span></p>
+    <p>\\ The <strong>evolution of the economy</strong> is
+    <strong>determined</strong> by the <strong>KKR</strong>, the
+    <strong>flow budget constraint</strong> <span
+    class="math inline">\((\dot{K} = K^{\alpha} L^{1-\alpha} - \delta K
+    - C)\)</span> and the <strong>initial</strong> and
+    <strong>boundary</strong> <strong>conditions</strong> <span
     class="math inline">\((K(0)=K_0, \quad
-    C(\infty)=\tilde{C})\)</span>\\
+    C(\infty)=\tilde{C})\)</span>\\ <strong>Important
+    Implications:</strong></p>
+    <ul>
+    <li>Decentralized equilibrium aligns with the social planner’s
+    solution, meaning the <strong>market equilibrium is the unique
+    first-best outcome</strong>.</li>
+    <li>This result stems from the assumption of a <strong>perfectly
+    neoclassical economy</strong> (<span
+    class="math inline">\(\rightarrow\)</span> First theorem of welfare
+    economics states that any competitive equilibrium is
+    Pareto-efficient).</li>
+    </ul>
     <h2 data-number="1.7" id="technological-progress"><span
     class="header-section-number">1.7</span> Technological progress</h2>
-    <p>The following notation employs a and production function: <span
+    <p>The following notation employs a <strong>exogenous</strong> and
+    <strong>labor augmenting</strong> production function: <span
     class="math display">\[Y=K^\alpha(AL)^{1-\alpha} \quad \quad with
     \quad A=A_0e^{xt},x\geq0\]</span> Following the same steps (setting
-    up the Hamiltonian and solving for the KKR) yields a very similar :
-    <span class="math display">\[\begin{equation}
+    up the Hamiltonian and solving for the KKR) yields a very similar
+    <strong>dynamic system to describe the economy</strong>: <span
+    class="math display">\[\begin{equation}
         \dot{C} = \frac{C}{\sigma} \left( \alpha K^{\alpha-1}
     (AL)^{1-\alpha} - \delta - \rho \right)
         \label{KRR1.6}
@@ -746,7 +1143,9 @@ Note: With labor growth (i.e. growing population) we&#39;d have $\hat{Y}=\hat{L}
     <details class="box green">
     <summary>Comparison of Ramsey and OLG</summary>
     <div class="box-content">
-    <p></p>
+    <p><em>Note: If an representative agent exists a change in
+    distribution between household does not change economic variables
+    </em></p>
     </div>
     </details>
     <h2 data-number="2.1" id="general-setup-households-and-firms"><span
@@ -769,7 +1168,8 @@ Note: With labor growth (i.e. growing population) we&#39;d have $\hat{Y}=\hat{L}
     class="math inline">\(L_t:=L_{y,t}\)</span> and grows at rate <span
     class="math inline">\(n\geq0\)</span>:</p>
     <p><img src="images/olg.png" /></p>
-    <p></p>
+    <p><em>Notice that an individual does not gain utility by inheriting
+    wealth to its children.</em></p>
     <h3 data-number="2.1.2" id="firms-and-capital-accumulation"><span
     class="header-section-number">2.1.2</span> Firms and Capital
     Accumulation</h3>
@@ -779,13 +1179,21 @@ Note: With labor growth (i.e. growing population) we&#39;d have $\hat{Y}=\hat{L}
     class="math display">\[Y_t=F(K_t,A_tL_t) \quad \quad
     A_t=(1+g)A_{t-1} \quad g\geq0\]</span> Setting <span
     class="math inline">\(\lambda=1/(A_tL_t)\)</span> we obtain the
-    <span class="math inline">\(y_t=f(k_t)\)</span>, with <span
+    <strong>intensive production function</strong> <span
+    class="math inline">\(y_t=f(k_t)\)</span>, with <span
     class="math inline">\(y_t:=Y_t/(A_t L_t)\)</span> and <span
     class="math inline">\(k_t:=K_t/(A_tL_t)\)</span>\\ Product and
-    factor markets are , i.e. firms make no profits in equilibrium and
-    the . Note that here, the depreciation rate is set to 0, i.e. <span
-    class="math inline">\(\delta=0\)</span>. \\ The capital stock is
-    owned by the old and labor is supplied by the young. The <span
+    factor markets are <strong>perfectly competitive</strong>,
+    i.e. firms make no profits in equilibrium and the <strong>interest
+    rate is: <span
+    class="math inline">\(r_t=f&#39;(k_t)\)</span></strong>. Note that
+    here, the depreciation rate is set to 0, i.e. <span
+    class="math inline">\(\delta=0\)</span>. <strong>Real wage rate per
+    <span class="math inline">\(A_tL_t\)</span> is: <span
+    class="math inline">\(w_t=f(k_t)-k_tf&#39;(k_t)\)</span></strong> \\
+    The capital stock is owned by the old and labor is supplied by the
+    young. The <strong>aggregate capital stock in period t is given
+    by:</strong> <span
     class="math inline">\(K_t=S_{t-1}=\underbrace{L_{t-1}\bigl(w_{t-1}A_{t-1}-C_{y,t-1}\bigr)}_{\text{savings
     by the young generation at } t-1}\)</span></p>
     <h2 data-number="2.2" id="household-dynamics"><span
@@ -822,56 +1230,100 @@ Note: With labor growth (i.e. growing population) we&#39;d have $\hat{Y}=\hat{L}
     \frac{\partial \mathcal{L}}{\partial \lambda}
     = w_t A_t - \left( C_{y,t} + \frac{C_{o,t+1}}{1 + r_{t+1}} \right)
     \]</span></p>
-    Dividing FOC2 by FOC1 yields the (analogue to two period discrete
-    time Keynes-Ramsey rule): <span
+    <p>Dividing FOC2 by FOC1 yields the <strong>Euler Equation</strong>
+    (analogue to two period discrete time Keynes-Ramsey rule): <span
     class="math display">\[\frac{(C_{o,t+1})^{-\sigma}}{(C_{y,t})^{-\sigma}}
     = \frac{1+\rho}{1+r_{t+1}} \implies \frac{C_{o,t+1}}{C_{y,t}} =
-    \left( \frac{1+r_{t+1}}{1+\rho} \right)^{1/\sigma}\]</span>
+    \left( \frac{1+r_{t+1}}{1+\rho} \right)^{1/\sigma}\]</span></p>
+    <ul>
+    <li>Consumption increases whenever <span
+    class="math inline">\(r_{t+1}&gt;\rho\)</span></li>
+    <li>Curvature of households utility function, i.e. intertemporal
+    elasticity of substitution (given by <span
+    class="math inline">\(\sigma\)</span>) determines how much
+    consumption varies in response to changes in <span
+    class="math inline">\(r_{t+1}-\rho\)</span>. <em>Note: This is also
+    similar to the KRR in the Ramsey Model)</em></li>
+    <li>Log-linearization yields <span
+    class="math inline">\(\hat{C}\approxeq(r-\rho)/\sigma\)</span></li>
+    </ul>
     <p>Together with the budget constraint, the Euler equation describes
-    consumption with the <span class="math display">\[C_{y,t} = [1 -
-    s(r_{t+1})] w_t A_t \quad \text{with} \quad s(r_{t+1}) =
+    consumption with the <strong>implied consumption function:</strong>
+    <span class="math display">\[C_{y,t} = [1 - s(r_{t+1})] w_t A_t
+    \quad \text{with} \quad s(r_{t+1}) =
     \frac{(1+r_{t+1})^{(1-\sigma)/\sigma}}{(1+\rho)^{1/\sigma} +
     (1+r_{t+1})^{(1-\sigma)/\sigma}}\]</span></p>
     <details class="box red">
     <summary>Derivation of the savings rate and consumption</summary>
     <div class="box-content">
-    <pre><code>\textbf{1. Euler Equation \&amp; Budget Constraint} \\
-Multiple both sides of the Euler equation by $C_{y,t}$ and and get $C_{o,t+1} = \left( \frac{1+r_{t+1}}{1+\rho} \right)^{1/\sigma} C_{y,t}$ and substitute that into\\ $0 = w_t A_t - \left( C_{y,t} + \frac{C_{o,t+1}}{1+r_{t+1}} \right)$:
-\[
-0 = w_t A_t - C_{y,t} \left[ 1 + \frac{(1+r_{t+1})^{1/\sigma} (1+\rho)^{-1/\sigma}}{1+r_{t+1}} \right]
-\]
-
-\textbf{2. Solve for $C_{y,t}$} \\
-Using the identity $\frac{(1+r_{t+1})^{1/\sigma}}{1+r_{t+1}} = (1+r_{t+1})^{\frac{1-\sigma}{\sigma}}$:
-\[
-C_{y,t} \left[ \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{\frac{1-\sigma}{\sigma}}}{(1+\rho)^{1/\sigma}} \right] = w_t A_t
-\]
-\[
-C_{y,t} = \underbrace{\frac{(1+\rho)^{1/\sigma}}{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma}}}_{\text{consumption rate } 1-s} w_t A_t
-\]
-
-\textbf{3. Savings Rate Derivation} \\
-Since $s(r_{t+1}) = 1 - \frac{C_{y,t}}{w_t A_t}$:
-\[
-s(r_{t+1}) = 1 - \frac{(1+\rho)^{1/\sigma}}{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma}}
-\]
-\[
-s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\rho)^{1/\sigma}}{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma}}
-\]
-\[
-\mathbf{s(r_{t+1}) = \frac{(1+r_{t+1})^{(1-\sigma)/\sigma}}{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma}}}
-\]</code></pre>
+    <pre><code>**1. Euler Equation \&amp; Budget Constraint** \\
+Multiple both sides of the Euler equation by $C_{y,t}$ and and get $C_{o,t+1} = \left( \frac{1+r_{t+1}}{1+\rho} \right)^{1/\sigma} C_{y,t}$ and substitute that into\\ $0 = w_t A_t - \left( C_{y,t} + \frac{C_{o,t+1}}{1+r_{t+1}} \right)$:</code></pre>
+    <p><span class="math display">\[
+        0 = w_t A_t - C_{y,t} \left[ 1 + \frac{(1+r_{t+1})^{1/\sigma}
+    (1+\rho)^{-1/\sigma}}{1+r_{t+1}} \right]
+        \]</span></p>
+    <pre><code>\textbf{2. Solve for $C_{y,t}$} \\
+Using the identity $\frac{(1+r_{t+1})^{1/\sigma}}{1+r_{t+1}} = (1+r_{t+1})^{\frac{1-\sigma}{\sigma}}$:</code></pre>
+    <p><span class="math display">\[
+        C_{y,t} \left[ \frac{(1+\rho)^{1/\sigma} +
+    (1+r_{t+1})^{\frac{1-\sigma}{\sigma}}}{(1+\rho)^{1/\sigma}} \right]
+    = w_t A_t
+        \]</span></p>
+    <p><span class="math display">\[
+        C_{y,t} =
+    \underbrace{\frac{(1+\rho)^{1/\sigma}}{(1+\rho)^{1/\sigma} +
+    (1+r_{t+1})^{(1-\sigma)/\sigma}}}_{\text{consumption rate } 1-s} w_t
+    A_t
+        \]</span></p>
+    <pre><code>**3. Savings Rate Derivation** \\
+Since $s(r_{t+1}) = 1 - \frac{C_{y,t}}{w_t A_t}$:</code></pre>
+    <p><span class="math display">\[
+        s(r_{t+1}) = 1 - \frac{(1+\rho)^{1/\sigma}}{(1+\rho)^{1/\sigma}
+    + (1+r_{t+1})^{(1-\sigma)/\sigma}}
+        \]</span></p>
+    <p><span class="math display">\[
+        s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} +
+    (1+r_{t+1})^{(1-\sigma)/\sigma} -
+    (1+\rho)^{1/\sigma}}{(1+\rho)^{1/\sigma} +
+    (1+r_{t+1})^{(1-\sigma)/\sigma}}
+        \]</span></p>
+    <p><span class="math display">\[
+        \mathbf{s(r_{t+1}) =
+    \frac{(1+r_{t+1})^{(1-\sigma)/\sigma}}{(1+\rho)^{1/\sigma} +
+    (1+r_{t+1})^{(1-\sigma)/\sigma}}}
+        \]</span></p>
     </div>
     </details>
     <h3 data-number="2.2.2" id="households-savings-rate"><span
     class="header-section-number">2.2.2</span> Households: Savings
     Rate</h3>
-    <p>How does <span class="math inline">\(r\)</span> impact <span
-    class="math inline">\(s\)</span>?</p>
+    <p>How does <strong>interest rate</strong> <span
+    class="math inline">\(r\)</span> impact <strong>savings
+    rate</strong> <span class="math inline">\(s\)</span>?</p>
     <p><img src="images/savings.png" /></p>
-    The is, that … .The savings rate <span
-    class="math inline">\(s(r_{t+1})\)</span> is increasing in <span
-    class="math inline">\(r_{t+1}\)</span> <span
+    <ul>
+    <li> As <span class="math inline">\(r\)</span> increases, the
+    opportunity costs of <span class="math inline">\(C_1\)</span> go up.
+    Hence, <span class="math inline">\(C_1\)</span> is depressed and the
+    <strong>savings rate increases</strong>: <span
+    class="math inline">\(r \uparrow \to C_1 \downarrow \to
+    \textcolor{red}{s \uparrow}\)</span></li>
+    <li> As <span class="math inline">\(r\)</span> increases, capital
+    income (<span class="math inline">\(2^{nd}\)</span> period of life)
+    increases. Everything else the same, <span
+    class="math inline">\(C_2\)</span> increases (<span
+    class="math inline">\(2^{nd}\)</span> period income is completely
+    consumed). Due to consumption smoothing, <span
+    class="math inline">\(C_1\)</span> (out of labor income) goes up,
+    meaning that <strong>savings rate falls</strong>: <span
+    class="math inline">\(r \uparrow \to (1+r)(wA - C_1) \uparrow \to
+    C_2 \uparrow \to C_1 \uparrow \to \textcolor{blue}{s
+    \downarrow}\)</span></li>
+    </ul>
+    <p>The <strong>effect of <span
+    class="math inline">\(\sigma\)</span></strong> is, that … .The
+    savings rate <span class="math inline">\(s(r_{t+1})\)</span> is
+    increasing in <span class="math inline">\(r_{t+1}\)</span> <span
     class="math inline">\(\Leftrightarrow\)</span> $
     (1+r_{t+1})^{(1-)/}$ is increasing in <span
     class="math inline">\(r_{t+1}\)</span>. \ This is shown by: <span
@@ -879,25 +1331,50 @@ s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\r
     (1+r_{t+1})^{(1-\sigma)/\sigma}}{\partial r_{t+1}} =
     \frac{1-\sigma}{\sigma} (1+r_{t+1})^{(1-\sigma)/\sigma - 1} =
     \frac{1-\sigma}{\sigma} (1+r_{t+1})^{(1-2\sigma)/\sigma}\]</span>\
-    We can look at three cases:
+    We can look at three cases:</p>
+    <p>[label={}] - <span class="math display">\[\frac{\partial
+    s(r_{t+1})}{\partial r_{t+1}} &gt; 0 \quad if \quad\sigma &lt;
+    1\]</span> - <span class="math display">\[\frac{\partial
+    s(r_{t+1})}{\partial r_{t+1}} = 0 \quad if \quad \sigma = 1\]</span>
+    - <span class="math display">\[\frac{\partial s(r_{t+1})}{\partial
+    r_{t+1}} &lt; 0 \quad if \quad \sigma &gt; 1\]</span></p>
     <h2 data-number="2.3"
     id="general-equilibrium-and-national-accounting"><span
     class="header-section-number">2.3</span> General equilibrium and
     national accounting</h2>
-    A general (market) equilibrium for this economy consists of time
-    paths for the and the such that
-    \end{itemize} <span class="math display">\[
+    <p><strong>Definition General Equilibrium:</strong> A general
+    (market) equilibrium for this economy consists of time paths for the
+    and the such that</p>
+    <ul>
+    <li><p>Final good producers maximize profits <span
+    class="math inline">\(Y_t - r_t K_t - w_t A_t L_t\)</span> at each
+    <span class="math inline">\(t \in \{0, 1, \dots,
+    \infty\}\)</span></p></li>
+    <li><p>Households maximize life-time utility</p></li>
+    <li><p> K_t = S_{t-1} = L_{t-1}(w_{t-1}A_{t-1} - C_{t-1}) ,, , t {0,
+    1, , }</p></li>
+    <li><p> L_t^S = L_t^D ,, , t {0, 1, , }</p></li>
+    <li><p>Goods market clears: <span class="math inline">\(Y_t +
+    (1-\delta)K_t = I_t + C_t \ \forall \ t \in \{0, 1, \dots,
+    \infty\}\)</span> with <span class="math inline">\(C_t = C_{y,t}L_t
+    + C_{o,t}L_{t-1}\)</span> (and <span class="math inline">\(\delta =
+    0\)</span> throughout this chapter)</p>
+    <p>\end{itemize} <strong>Goods market clearing condition</strong>
+    <span class="math display">\[
     \underbrace{Y_t + (1-\delta)K_t}_{\text{goods available at end of }
     t}
     = C_{o,t} + C_{y,t} + I_t
-    \]</span> <span class="math display">\[
-    Y_t + (1-\underbrace{\delta}_{=0})K_t
-    = \underbrace{(1+r_t)\overbrace{s_{t-1} w_{t-1} A_{t-1}
-    L_{t-1}}^{S_{t-1}}
-    }_{C_{o,t}}
-    + \underbrace{(1-s_t) w_t A_t L_t}_{C_{y,t}}
-    + \underbrace{s_t w_t A_t L_t}_{I_t = S_t = K_{t+1}}
-    \]</span> \\
+    \]</span> $$ Y_t + (1-<em>{=0})K_t = </em>{C_{o,t}}</p></li>
+    <li><p><em>{C</em>{y,t}}</p></li>
+    <li><p><em>{I_t = S_t = K</em>{t+1}} $$ \\ </p></li>
+    <li><p>National income <span class="math inline">\(X_t\)</span> ()
+    <strong>equals</strong> aggregate output <span
+    class="math inline">\(Y_t\)</span>.</p></li>
+    <li><p>Noting <span class="math inline">\(w_t =
+    (1-\alpha)k_t^\alpha\)</span>, <span class="math inline">\(r_t =
+    \alpha k_t^{\alpha-1}\)</span> and <span class="math inline">\(k_t
+    := K_t / (A_t L_t)\)</span> gives</p></li>
+    </ul>
     <p>\end{itemize} <span class="math display">\[\begin{align*}
     X_t &amp;= \underbrace{\underbrace{w_t}_{\text{wage per unit AL}}
     A_t L_t}_{\text{income of young agents}} + \underbrace{r_t
@@ -910,7 +1387,7 @@ s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\r
     id="economy-dynamics-and-capital-accumulation"><span
     class="header-section-number">2.4</span> Economy dynamics and
     capital accumulation</h2>
-    Aggregate capital in <span class="math inline">\(t+1\)</span> is
+    <p>Aggregate capital in <span class="math inline">\(t+1\)</span> is
     not-consumed output produced in <span
     class="math inline">\(t\)</span> and depends on <span
     class="math inline">\(w_tA_t\)</span> (wage income) and <span
@@ -923,20 +1400,31 @@ s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\r
     class="math inline">\(A_{t+1}=(1+x)A_t\)</span> and <span
     class="math inline">\(L_{t+1}=(1+n)L_t\)</span> we get: <span
     class="math display">\[\begin{gather*}
-    k_{t+1} = \frac{1}{(1+x)(1+n)} s(r_{t+1}) w_t \\[2ex]
+    k_{t+1} = \frac{1}{(1+x)(1+n)} s(r_{t+1}) w_t \
+
+    $$2ex]
     \text{Plug in competitive factor prices for $r_t$ and $w_t$}
     \\
     k_{t+1} = \frac{1}{(1+x)(1+n)} s \left[
     \underbrace{f&#39;(k_{t+1})}_{r_{t+1}} \right] \left[
     \underbrace{f(k_t) - k_t f&#39;(k_t)}_{w_t} \right]
-    \end{gather*}\]</span> This , together with the initial condition
-    <span class="math inline">\(k_0=k_{initial}\)</span> describes the
-    evolution of the economy. We can find the in <span
+    \end{gather*}\]</span> This <strong>first order difference
+    equation</strong>, together with the initial condition <span
+    class="math inline">\(k_0=k_{initial}\)</span> describes the
+    evolution of the economy. We can find the <strong>zero growth steady
+    state</strong> in <span
     class="math inline">\(\tilde{k}=K/(AL)\)</span>, where <span
     class="math inline">\(\tilde{k}=k_t=k_{t+1}\)</span> <span
     class="math display">\[\tilde{k} = \frac{1}{(1+x)(1+n)} s \left[
     f&#39;(\tilde{k}) \right] \left[ f(\tilde{k}) - \tilde{k}
-    f&#39;(\tilde{k}) \right]\]</span>
+    f&#39;(\tilde{k}) \right]\]</span></p>
+    <ul>
+    <li><span class="math inline">\(k_t=const.\)</span> implies <span
+    class="math inline">\(\frac{K_{t+1}}{K_t}=(1+x)(1+n)\)</span></li>
+    <li>In steady state we have <span
+    class="math inline">\(s=const.\)</span> and <span
+    class="math inline">\(K/Y=const.\)</span></li>
+    </ul>
     <p>\</p>
     Plugging <span class="math inline">\(y=k^\alpha\)</span> and <span
     class="math inline">\(\sigma=1\)</span> into our difference equation
@@ -944,12 +1432,13 @@ s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\r
     \frac{1}{(1+x)(1+n)} \frac{1}{2+\rho} (1-\alpha) k_t^\alpha\]</span>
     <h3 data-number="2.4.1" id="dynamic-inefficiency"><span
     class="header-section-number">2.4.1</span> Dynamic Inefficiency</h3>
-    In the steady state, the condition <span
+    <p>In the steady state, the condition <span
     class="math inline">\(\tilde{r} = n + x\)</span> represents a
     boundary (‘growth speed limit’) where consumption is maximized
     (<span class="math inline">\(\rightarrow\)</span> Golden Rule).
-    Unlike the Ramsey model, the OLG framework allows for , where an
-    economy over-accumulates capital such that <span
+    Unlike the Ramsey model, the OLG framework allows for
+    <strong>dynamic inefficiency</strong>, where an economy
+    over-accumulates capital such that <span
     class="math inline">\(\tilde{r} &lt; n + x\)</span>. In this
     scenario, reducing the savings rate actually increases consumption
     <span class="math inline">\(\tilde{c}\)</span> for all generations.
@@ -974,43 +1463,106 @@ s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\r
     class="math inline">\(r=f&#39;(k)\)</span> and <span
     class="math inline">\(x=0\)</span>. \ We evaluate efficiency by
     comparing this market rate to the Golden Rule level <span
-    class="math inline">\(r_{GR}=f&#39;(\tilde{k}_{GR}) = n+0\)</span>
-    The First Fundamental Theorem of Welfare (FTW) fails here because
+    class="math inline">\(r_{GR}=f&#39;(\tilde{k}_{GR}) =
+    n+0\)</span></p>
+    <ul>
+    <li><strong>Efficient Region:</strong> <span
+    class="math inline">\(\tilde{r} \geq n\)</span>. The market
+    accumulates an optimal or sub-optimal amount of capital.</li>
+    <li><strong>Inefficient Region:</strong> <span
+    class="math inline">\(\tilde{r} &lt; n\)</span>. This occurs if
+    <span class="math inline">\(\alpha\)</span> is sufficiently small.
+    In this case, <span class="math inline">\(\tilde{k} &gt;
+    \tilde{k}_{GR}\)</span>, meaning the economy is “saturated” with
+    capital.</li>
+    </ul>
+    <p>The First Fundamental Theorem of Welfare (FTW) fails here because
     the infinite horizon of the economy, combined with the finite lives
     of agents, allows the competitive market solution to persist in a
-    state of Pareto-inferior over-accumulation. \\
+    state of Pareto-inferior over-accumulation. \\ <strong>Intuition
+    behind dynamic inefficicency</strong></p>
+    <ul>
+    <li><strong>Overaccumulation:</strong> It arises when a society
+    saves “too much,” leading to a capital stock so large that the
+    marginal product of capital falls below the economy’s growth rate
+    (<span class="math inline">\(r &lt; n\)</span>).</li>
+    <li><strong>Pareto improvement:</strong> In this state, the economy
+    is wasteful. A transfer scheme (reducing current savings to pay for
+    current elderly consumption) can make every generation better off
+    without reducing future consumption.</li>
+    <li><strong>Pecuniary Externalities:</strong> Individual households
+    save for their own old age without considering that aggregate
+    overaccumulation drives down the interest rate for everyone.</li>
+    <li><strong>Market Failure:</strong> Because the economy involves an
+    infinite horizon with infinite agents, the First Welfare Theorem
+    does not hold, allowing for competitive equilibria that are not
+    Pareto optimal.</li>
+    </ul>
     <p>\end{itemize}</p>
     <details class="box blue">
     <summary>Dynamic Inefficiency: From Solow to Ramsey to OLG</summary>
     <div class="box-content">
     <p>The dynamic inefficiency condition <span
-    class="math inline">\(\tilde r &lt; n + x\)</span> is , but the same
-    Golden Rule condition we know from the Solow model. What is new in
-    OLG is that the market equilibrium can fall into the inefficient
-    region all by itself. \\ Raising the savings rate rotates the
-    savings curve <span class="math inline">\(sf(\tilde k)\)</span>
-    upward, shifting the intersection with the break-even investment
-    line <span class="math inline">\((n+x+\delta)\tilde k\)</span> to
-    the right. This results in a higher steady-state capital intensity
-    <span class="math inline">\(\tilde k^*\)</span>. However, any
-    capital stock to the right of the Golden Rule level <span
+    class="math inline">\(\tilde r &lt; n + x\)</span> is <strong>not
+    new</strong>, but the same Golden Rule condition we know from the
+    Solow model. What is new in OLG is that the market equilibrium can
+    fall into the inefficient region all by itself. \\ <strong>Solow
+    recap.:</strong> Raising the savings rate rotates the savings curve
+    <span class="math inline">\(sf(\tilde k)\)</span> upward, shifting
+    the intersection with the break-even investment line <span
+    class="math inline">\((n+x+\delta)\tilde k\)</span> to the right.
+    This results in a higher steady-state capital intensity <span
+    class="math inline">\(\tilde k^*\)</span>. However, any capital
+    stock to the right of the Golden Rule level <span
     class="math inline">\(\tilde k_{\text{gold}}\)</span> is considered
     dynamically inefficient: due to diminishing returns, <span
     class="math inline">\(f&#39;(\tilde k)\)</span> falls and so does
     the interest rate. The economy over-accumulates until the net rate
     falls below the growth rate, i.e., <span
     class="math inline">\(\tilde r &lt; n + x\)</span>. The Golden Rule
-    itself reads [ <em>{f’(k)} = + n + x r = </em>{Y = g}. ]</p>
+    itself reads [ <em>{f’(k)} = + n + x r = </em>{Y = g}. $$</p>
     <p><img src="images/solowolg.png" /></p>
-    The same Golden Rule benchmark <span class="math inline">\(\tilde r
-    = n+x\)</span> plays a different role in each framework:
-    <p> The infinitely-lived Ramsey household weighs the marginal cost
-    of saving today against future consumption benefits. If <span
-    class="math inline">\(r &lt; \rho\)</span>, the household simply
-    stops saving. In OLG, the young household only weighs saving against
-    retirement consumption – the indirect effect on future generations
-    through capital accumulation is invisible to the saver. This
-    generational disconnect is the source of the market failure.</p>
+    <p><em>Comparing the three models.</em> The same Golden Rule
+    benchmark <span class="math inline">\(\tilde r = n+x\)</span> plays
+    a different role in each framework:</p>
+    <ul>
+    <li><strong>Solow.</strong> The savings rate <span
+    class="math inline">\(s\)</span> is exogenous. If you choose <span
+    class="math inline">\(s\)</span> above <span
+    class="math inline">\(s_{\text{gold}} = \alpha\)</span>, the steady
+    state lies to the right of <span class="math inline">\(\tilde
+    k_{\text{gold}}\)</span> and <span class="math inline">\(\tilde r
+    &lt; n+x\)</span>. Inefficiency is the <strong>modeller’s
+    choice</strong>: pick a different <span
+    class="math inline">\(s\)</span> and the problem disappears.</li>
+    <li><strong>Ramsey.</strong> The savings rate is endogenous and
+    chosen by an optimizing household. The TVC rules out paths with
+    <span class="math inline">\(\tilde r &lt; n+x\)</span> (these
+    violate dynamic optimality, as discussed in the saddle-path
+    analysis). The First Welfare Theorem holds, and the equilibrium is
+    always on the efficient side: <span class="math inline">\(\tilde r
+    \geq n+x\)</span></li>
+    <li><strong>OLG.</strong> The savings rate is also endogenous, but
+    the optimization is only over a <em>two-period</em> life. The young
+    save for retirement without internalizing that aggregate over-saving
+    drives down the future interest rate (a <strong>pecuniary
+    externality</strong>). The First Welfare Theorem fails, and <span
+    class="math inline">\(\tilde r &lt; n+x\)</span> can persist as a
+    competitive equilibrium. Compare the OLG market rate</li>
+    </ul>
+    <p><span class="math display">\[
+            \tilde r = \frac{\alpha}{1-\alpha}(1+n)(2+\rho)
+        \]</span></p>
+    <pre><code>to the golden rule: $n+x$. If the market rate is lower, the economy is dynamically inefficient.</code></pre>
+    <p><strong>Why does Ramsey not have the same problem like
+    OLG?</strong> The infinitely-lived Ramsey household weighs the
+    marginal cost of saving today against <em>all</em> future
+    consumption benefits. If <span class="math inline">\(r &lt;
+    \rho\)</span>, the household simply stops saving. In OLG, the young
+    household only weighs saving against <em>its own</em> retirement
+    consumption – the indirect effect on future generations through
+    capital accumulation is invisible to the saver. This generational
+    disconnect is the source of the market failure.</p>
     </div>
     </details>
     <details class="box blue">
@@ -1020,30 +1572,69 @@ s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\r
     class="math inline">\(s_{\text{gold}}\)</span> is the savings rate
     that maximizes steady-state consumption per effective worker <span
     class="math inline">\(\tilde c\)</span>.</p>
-    <p> Consider the Solow model with Cobb-Douglas production <span
-    class="math inline">\(y = k^\alpha\)</span>, exogenous labor growth
-    <span class="math inline">\(n\)</span>, technological progress <span
-    class="math inline">\(x\)</span>, and depreciation <span
-    class="math inline">\(\delta\)</span>. The steady-state capital
-    intensity is [ k = ()^{}, ] and steady-state consumption per
-    effective worker is [ c(s) = (1-s), k(s)^= k(s)^- (n++x), k(s), ]
-    where the second equality uses the steady-state condition <span
+    <p><em>Setup.</em> Consider the Solow model with Cobb-Douglas
+    production <span class="math inline">\(y = k^\alpha\)</span>,
+    exogenous labor growth <span class="math inline">\(n\)</span>,
+    technological progress <span class="math inline">\(x\)</span>, and
+    depreciation <span class="math inline">\(\delta\)</span>. The
+    steady-state capital intensity is</p>
+    <p><span class="math display">\[
+        \tilde k =
+    \left(\frac{s}{n+\delta+x}\right)^{\frac{1}{1-\alpha}},
+    \]</span></p>
+    <p>and steady-state consumption per effective worker is</p>
+    <p><span class="math display">\[
+        \tilde c(s) = (1-s)\, \tilde k(s)^\alpha = \tilde k(s)^\alpha -
+    (n+\delta+x)\, \tilde k(s),
+    \]</span></p>
+    <p>where the second equality uses the steady-state condition <span
     class="math inline">\(s\, \tilde k^\alpha = (n+\delta+x)\,\tilde
     k\)</span>.</p>
-    <p> Differentiate <span class="math inline">\(\tilde c\)</span> with
-    respect to <span class="math inline">\(\tilde k\)</span> and set
-    equal to zero: [ = k^{} - (n++x) = 0 _{f’(k), =, r + } = n++x. ]
-    Rearranging gives the : [ ] i.e., the net marginal product of
-    capital equals the economy’s growth rate <span
-    class="math inline">\(\hat Y = n + x\)</span>.</p>
+    <p><em>Maximization.</em> Differentiate <span
+    class="math inline">\(\tilde c\)</span> with respect to <span
+    class="math inline">\(\tilde k\)</span> and set equal to zero:</p>
+    <p><span class="math display">\[
+        \frac{d\tilde c}{d\tilde k} = \alpha \tilde k^{\alpha-1} -
+    (n+\delta+x) = 0 \quad \Longrightarrow \quad \underbrace{\alpha
+    \tilde k^{\alpha-1}}_{f&#39;(\tilde k)\, =\, \tilde r + \delta} =
+    n+\delta+x.
+    \]</span></p>
+    <p>Rearranging gives the <strong>Golden Rule condition</strong>:</p>
+    <p><span class="math display">\[
+        \boxed{\; \tilde r = n + x \;}
+    \]</span></p>
+    <p>i.e., the net marginal product of capital equals the economy’s
+    growth rate <span class="math inline">\(\hat Y = n + x\)</span>.</p>
     <p> Plug the steady-state expression for <span
     class="math inline">\(\tilde k\)</span> into the Golden Rule
     condition <span class="math inline">\(\alpha \tilde k^{\alpha-1} =
-    n+\delta+x\)</span>: [ ()^{-1} = n++x = n++x. ] Solving for <span
-    class="math inline">\(s\)</span>: [ ] i.e., the Golden Rule savings
-    rate equals the capital share. Empirically <span
-    class="math inline">\(\alpha \approx 0.3\)</span>.</p>
-
+    n+\delta+x\)</span>:</p>
+    <p><span class="math display">\[
+        \alpha \left(\frac{s}{n+\delta+x}\right)^{-1} = n+\delta+x \quad
+    \Longrightarrow \quad \alpha \cdot \frac{n+\delta+x}{s} =
+    n+\delta+x.
+    \]</span></p>
+    <p>Solving for <span class="math inline">\(s\)</span>:</p>
+    <p><span class="math display">\[
+        \boxed{\; s_{\text{gold}} = \alpha \;}
+    \]</span></p>
+    <p>i.e., the Golden Rule savings rate equals the capital share.
+    Empirically <span class="math inline">\(\alpha \approx
+    0.3\)</span>.</p>
+    <p><em>Interpretation.</em></p>
+    <ul>
+    <li>If <span class="math inline">\(s &lt; \alpha\)</span>: the
+    economy under-saves; raising <span class="math inline">\(s\)</span>
+    raises steady-state <span class="math inline">\(\tilde
+    c\)</span>.</li>
+    <li>If <span class="math inline">\(s = \alpha\)</span>: steady-state
+    consumption is maximized.</li>
+    <li>If <span class="math inline">\(s &gt; \alpha\)</span>: the
+    economy over-saves and is in the <strong>dynamically inefficient
+    region</strong>; lowering <span class="math inline">\(s\)</span>
+    raises <span class="math inline">\(\tilde c\)</span> for all
+    generations (a Pareto improvement).</li>
+    </ul>
     <p>The Solow model treats <span class="math inline">\(s\)</span> as
     exogenous, so reaching <span
     class="math inline">\(s_{\text{gold}}\)</span> is a matter of policy
@@ -1060,31 +1651,33 @@ s(r_{t+1}) = \frac{(1+\rho)^{1/\sigma} + (1+r_{t+1})^{(1-\sigma)/\sigma} - (1+\r
     <summary>Motivation</summary>
     <div class="box-content">
     <pre><code>Neoclassical growth models treat technological progress as exogenous, leaving the main driver of long-run growth unexplained. Endogenous growth theory addresses this by modeling innovation, human capital accumulation, and knowledge spillovers (“externalities”) as outcomes of economic decisions. This allows productivity growth to arise within the model, driven by investment, learning, and creative destruction.\\\\
-Endogenous growth models build a consistent framework for economic growth driven by \textbf{investment in physical capital}, human capital, and \textbf{R\&amp;D}, without relying on an exogenous process. </code></pre>
+Endogenous growth models build a consistent framework for economic growth driven by **investment in physical capital**, human capital, and **R\&amp;D**, without relying on an exogenous process. </code></pre>
     </div>
     </details>
     <h2 data-number="3.1"
     id="the-simplest-form-of-endogenous-growth-ak-model"><span
     class="header-section-number">3.1</span> The simplest form of
     endogenous growth: AK Model</h2>
-    The refers to a production function of the form <span
-    class="math inline">\(Y=AK\)</span> which is obtained if one starts
-    from Cobb-Douglas and <span class="math inline">\(\alpha\)</span>
-    approaches <span class="math inline">\(1\)</span>: <span
+    The <strong>AK-Model</strong> refers to a production function of the
+    form <span class="math inline">\(Y=AK\)</span> which is obtained if
+    one starts from Cobb-Douglas and <span
+    class="math inline">\(\alpha\)</span> approaches <span
+    class="math inline">\(1\)</span>: <span
     class="math display">\[Y=AK^\alpha L^{1-\alpha} \xrightarrow{\alpha
     \rightarrow 1}Y=AK\]</span>
     {
-    } In the the Keynes Ramsey Rule (KRR) with an AK production function
-    becomes <span class="math inline">\(\hat{C}^*=
+    } In the <strong>Ramsey Model</strong> the Keynes Ramsey Rule (KRR)
+    with an AK production function becomes <span
+    class="math inline">\(\hat{C}^*=
     \hat{Y}^*=\frac{A-\delta-\rho}{\sigma}\)</span>. Consumption and
     tuhs output grow, if <span
     class="math inline">\(A-\delta-\rho&gt;0\)</span>. We will see that
     due to the AK production function, policy can influence <span
     class="math inline">\(A\)</span> in this and thereby influence
     growth: \\ Since <span class="math inline">\(r+\delta=\frac{\partial
-    Y}{\partial K}\)</span> we get <span
-    class="math inline">\(\frac{\partial Y}{\partial
-    K}=r+\delta\)</span>, due to <span
+    Y}{\partial K}\)</span> <em>(this is a general result, see chapter
+    1)</em> we get <span class="math inline">\(\frac{\partial
+    Y}{\partial K}=r+\delta\)</span>, due to <span
     class="math inline">\(Y=AK\)</span>, we see that <span
     class="math inline">\(\frac{\partial Y}{\partial
     K}=A=r+\delta\)</span>. Thus, policymakers can, by influencing <span
@@ -1092,9 +1685,10 @@ Endogenous growth models build a consistent framework for economic growth driven
     class="math inline">\(A\)</span> which makes <span
     class="math inline">\(A\)</span> endogenous.
     {
-    <p>} In the the steady state is characterized by <span
-    class="math inline">\(\dot{K}=sY-\delta K\)</span> which yields the
-    steady state growth rate (balanced growth path): <span
+    <p>} In the <strong>Solow Model</strong> the steady state is
+    characterized by <span class="math inline">\(\dot{K}=sY-\delta
+    K\)</span> which yields the steady state growth rate (balanced
+    growth path): <span
     class="math inline">\(\hat{K}^*=sY/K-\delta=\hat{Y}^*\)</span>.
     Plugging in the AK production function here, yields: <span
     class="math inline">\(\hat{K}^*=sA-\delta=\hat{Y}^*\)</span> and
@@ -1108,38 +1702,70 @@ Endogenous growth models build a consistent framework for economic growth driven
     id="romer-1986-simple-endogenous-growth-model"><span
     class="header-section-number">3.2</span> Romer (1986): Simple
     Endogenous Growth Model</h2>
-    <p> A representative (mass one) Ramsey household with inelastic
-    labor supply <span class="math inline">\(L\)</span> and assets <span
-    class="math inline">\(\mathcal{A}(t)\)</span> earns income [ w(t)L +
-    r(t)(t). ] Consumption evolves according to the Keynes–Ramsey rule [
-    = . ]</p>
-    <p> A continuum of firms <span class="math inline">\(i \in
-    [0,1]\)</span> produces output with technology [ Y(i,t) = K(i,t)^{}
-    ^{1-}, (0,1),  (0,1). ] Aggregate technology features Marshallian
-    externalities (‘spill-overs across firms’): [ A(t) = _0^1 K(i,t),
-    di. ]</p>
-    <p> <span class="math inline">\(\max_{K(i),L(i)} \; K(i)^{\alpha}[A
+    <p><strong>Households.</strong> A representative (mass one) Ramsey
+    household with inelastic labor supply <span
+    class="math inline">\(L\)</span> and assets <span
+    class="math inline">\(\mathcal{A}(t)\)</span> earns income</p>
+    <p><span class="math display">\[
+    w(t)L + r(t)\mathcal{A}(t).
+    \]</span></p>
+    <p>Consumption evolves according to the Keynes–Ramsey rule</p>
+    <p><span class="math display">\[
+    \frac{\dot{c}(t)}{c(t)} = \frac{r(t) - \rho}{\sigma}.
+    \]</span></p>
+    <p><strong>Firms.</strong> A continuum of firms <span
+    class="math inline">\(i \in [0,1]\)</span> produces output with
+    technology</p>
+    <p><span class="math display">\[
+    Y(i,t) = K(i,t)^{\alpha} \bigl[A(t)L(i)\bigr]^{1-\alpha}, \quad
+    \alpha \in (0,1), \ \delta \in (0,1).
+    \]</span></p>
+    <p>Aggregate technology features Marshallian externalities
+    (‘spill-overs across firms’):</p>
+    <p><span class="math display">\[
+    A(t) = \int_0^1 K(i,t)\, di.
+    \]</span></p>
+    <p><strong>Each firm solves:</strong> <span
+    class="math inline">\(\max_{K(i),L(i)} \; K(i)^{\alpha}[A
     L(i)]^{1-\alpha} - wL(i) - (r+\delta)K(i)\)</span> and we obtain the
-    following FOCs: [ (1-)K(i)<sup>{}[A L(i)]</sup>{-}A - w = 0, ] [
-    K(i)<sup>{}[A L(i)]</sup>{1-} - (r+) = 0. ]</p>
-    <span class="math inline">\(K(i)=K\)</span>, <span
+    following FOCs:</p>
+    <p><span class="math display">\[
+    (1-\alpha)K(i)^{\alpha}[A L(i)]^{-\alpha}A - w = 0,
+    \]</span></p>
+    <p><span class="math display">\[
+    \alpha K(i)^{\alpha-1}[A L(i)]^{1-\alpha} - (r+\delta) = 0.
+    \]</span></p>
+    <p><strong>In symmetric equilibrium we have:</strong> <span
+    class="math inline">\(K(i)=K\)</span>, <span
     class="math inline">\(L(i)=L\)</span> <span
     class="math inline">\(\forall\)</span> <span
     class="math inline">\(i\)</span> and hence <span
     class="math inline">\(A = \int_0^1 K(i)\,di = K.\)</span>\\
-    Rewriting the FOC for capital: [ K^{}(K L)^{1-} = r+;;;; r(t) =
-    L^{1-} - . ] And combining with the conditions: [ _0^1 L(i),di = L,
-    _0^1 K(i,t),di = (t), ] <span class="math inline">\((\)</span>which
-    imply the aggregate resource constraint <span
-    class="math inline">\(\dot{K}(t) = Y(t) - \delta K(t) -
-    C(t))\)</span> yield the after plugging <span
-    class="math inline">\(r(t) = \alpha L^{1-\alpha} - \delta\)</span>
-    into the KRR from above: [ ()^* = ()^* = ()^* = . ] is that
-    knowledge spillovers (<span
-    class="math inline">\(A(t)=K(t)\)</span>) eliminate diminishing
-    returns to capital at the aggregate level, generating endogenous
-    growth with a constant equilibrium interest rate. Without these
-    knowledge spillovers the typical chain of effects is: <span
+    Rewriting the FOC for capital:</p>
+    <p><span class="math display">\[
+    \alpha K^{\alpha-1}(K L)^{1-\alpha} = r+\delta \;\;\Rightarrow\;\;
+    r(t) = \alpha L^{1-\alpha} - \delta.
+    \]</span></p>
+    <p>And combining with the <strong>market clearing</strong>
+    conditions:</p>
+    <p><span class="math display">\[
+    \int_0^1 L(i)\,di = L, \qquad \int_0^1 K(i,t)\,di = \mathcal{A}(t),
+    \]</span></p>
+    <p><span class="math inline">\((\)</span>which imply the aggregate
+    resource constraint <span class="math inline">\(\dot{K}(t) = Y(t) -
+    \delta K(t) - C(t))\)</span> yield the <strong>balanced growth
+    path</strong> after plugging <span class="math inline">\(r(t) =
+    \alpha L^{1-\alpha} - \delta\)</span> into the KRR from above:</p>
+    <p><span class="math display">\[
+    \left(\frac{\dot{c}}{c}\right)^* = \left(\frac{\dot{K}}{K}\right)^*
+    = \left(\frac{\dot{Y}}{Y}\right)^* = \frac{\alpha L^{1-\alpha} -
+    \delta - \rho}{\sigma}.
+    \]</span></p>
+    <strong>The key implication</strong> is that knowledge spillovers
+    (<span class="math inline">\(A(t)=K(t)\)</span>) eliminate
+    diminishing returns to capital at the aggregate level, generating
+    endogenous growth with a constant equilibrium interest rate. Without
+    these knowledge spillovers the typical chain of effects is: <span
     class="math inline">\(K\uparrow \rightarrow r\downarrow \rightarrow
     s\downarrow\)</span>, but here an increase in <span
     class="math inline">\(K\)</span> also increases <span
@@ -1149,28 +1775,29 @@ Endogenous growth models build a consistent framework for economic growth driven
     effects offsets the decrease in <span
     class="math inline">\(s\)</span> and may lead to forever ongoing
     capital accumulation. In other words: The marginal product of
-    capital is not diminished, i.e. it does not fall as <span
-    class="math inline">\(K\)</span> increases. This is somewhat similar
-    to the AK-model effect.
+    capital is not diminished, i.e. it does not fall <em>(as strongly?,
+    im unsure here)</em> as <span class="math inline">\(K\)</span>
+    increases. This is somewhat similar to the AK-model effect.
     {
     <p>}</p>
     <h3 data-number="3.2.1"
     id="a-note-on-marshallian-externalities"><span
     class="header-section-number">3.2.1</span> A Note on Marshallian
     Externalities</h3>
-    <p> Marshallian externalities imply that a firm’s efficiency
-    increases with the intensity of surrounding economic activity. While
-    internal production remains standard, Total Factor Productivity
-    (TFP) is endogenized as a function of the aggregate environment. \\
+    <p><strong>Concept:</strong> Marshallian externalities imply that a
+    firm’s efficiency increases with the intensity of surrounding
+    economic activity. While internal production remains standard, Total
+    Factor Productivity (TFP) is endogenized as a function of the
+    aggregate environment. \\ <strong>Firm-Level Production:</strong>
     Individual firm <span class="math inline">\(i\)</span> produces
     according to: <span class="math display">\[\begin{equation}
         Y(i) = B K(i)^\alpha L(i)^{1-\alpha}
     \end{equation}\]</span></p>
-    <p> TFP (<span class="math inline">\(B\)</span>) is assumed to
-    depend on the average capital (<span
-    class="math inline">\(\bar{K}\)</span>) and average labor (<span
-    class="math inline">\(\bar{L}\)</span>) across all firms: <span
-    class="math display">\[\begin{equation}
+    <p><strong>Endogenous TFP (The Modeling Shortcut):</strong> TFP
+    (<span class="math inline">\(B\)</span>) is assumed to depend on the
+    average capital (<span class="math inline">\(\bar{K}\)</span>) and
+    average labor (<span class="math inline">\(\bar{L}\)</span>) across
+    all firms: <span class="math display">\[\begin{equation}
         B = A \bar{K}^\beta \bar{L}^\gamma \quad (\beta, \gamma \geq 0)
     \end{equation}\]</span></p>
     <p>Substituting this into the production function yields: <span
@@ -1178,11 +1805,34 @@ Endogenous growth models build a consistent framework for economic growth driven
         Y(i) = A \bar{K}^\beta \bar{L}^\gamma K(i)^\alpha
     L(i)^{1-\alpha}
     \end{equation}\]</span></p>
-
+    <p><strong>Key Insights:</strong></p>
+    <ul>
+    <li><strong>Returns to Scale:</strong> Production exhibits
+    <strong>CRS</strong> in private inputs (<span
+    class="math inline">\(K(i), L(i)\)</span>), allowing for perfect
+    competition, but <strong>IRS</strong> in aggregate inputs due to the
+    externalities.</li>
+    <li><strong>Special Case:</strong> The previous model (Romer 1986)
+    is a restricted version of this framework where <span
+    class="math inline">\(A=1\)</span>, <span
+    class="math inline">\(\gamma=0\)</span>, and <span
+    class="math inline">\(\beta=1\)</span> (yielding <span
+    class="math inline">\(B = \bar{K}\)</span>).</li>
+    </ul>
     <h2 data-number="3.3" id="romer-1990-rd-driven-growth"><span
     class="header-section-number">3.3</span> Romer (1990): R&amp;D
     driven growth</h2>
-    The model rests on three premises:
+    <p>The model rests on three premises:</p>
+    <ul>
+    <li>Economic growth is driven by <strong>technological
+    progress</strong> as well as <strong>capital
+    accumulation</strong>.</li>
+    <li>Technological progress results from deliberate actions taken by
+    private agents who respond to <strong>market
+    incentives</strong>.</li>
+    <li>Technological knowledge is a <strong>non-rivalrous
+    input</strong>.</li>
+    </ul>
     <h3 data-number="3.3.1" id="modelling-technological-change"><span
     class="header-section-number">3.3.1</span> Modelling Technological
     Change</h3>
@@ -1202,26 +1852,68 @@ Endogenous growth models build a consistent framework for economic growth driven
         Y = \underbrace{F_K(\cdot)}_{r+\delta} K +
     \underbrace{F_L(\cdot)}_{w} L.
     \end{equation}\]</span></p>
-    <p>This reveals a fundamental tension: . Agents who produce
-    technological change must respond to market incentives and therefore
-    need to be rewarded. Yet under CRS and perfect competition, . \</p>
+    <p>This reveals a fundamental tension: <strong>perfect competition,
+    CRS, and premise (2) are mutually exclusive</strong>. Agents who
+    produce technological change must respond to market incentives and
+    therefore need to be rewarded. Yet under CRS and perfect
+    competition, <strong>output is entirely used up paying wages and
+    rental rates, leaving nothing to compensate researchers</strong>.
+    \</p>
     <h3 data-number="3.3.2" id="structure-of-the-model"><span
     class="header-section-number">3.3.2</span> Structure of the
     model</h3>
     <p><img src="images/image.png" /></p>
     <p>The Dixit-Stiglitz kernel refers to the goods sector featuring
     many intermediate goods <span class="math inline">\(x(i)\)</span>
-    which are and a final output sector which bundles the intermediate
-    goods into the final output <span class="math inline">\(Y\)</span>.
-    The production function of the intermediate firms are <span
+    which are <strong>imperfect substitutes</strong> and a final output
+    sector which bundles the intermediate goods into the final output
+    <span class="math inline">\(Y\)</span>. The production function of
+    the <strong>monopolistic</strong> intermediate firms are <span
     class="math inline">\(x(i)=k(i)\)</span>, i.e. one unit of capital
     is used to produce one unit of intermediate good.</p>
-    <h3 data-number="3.3.3" id="households-2"><span
-    class="header-section-number">3.3.3</span> Households: </h3>
-    The economy is populated by a of identical households. Each
-    household is endowed with <span class="math inline">\(L\)</span>
-    units of labor services per unit of time, which are supplied to the
-    labor market.
+    <h3 data-number="3.3.3"
+    id="households-ramsey-household-with-two-assets."><span
+    class="header-section-number">3.3.3</span> Households: <em>Ramsey
+    household with two assets.</em></h3>
+    <p>The economy is populated by a <strong>continuum of mass
+    one</strong> of identical households. Each household is endowed with
+    <span class="math inline">\(L\)</span> units of labor services per
+    unit of time, which are supplied <strong>inelastically</strong> to
+    the labor market.</p>
+    <ul>
+    <li>Household wealth comprises <strong>equity</strong> (<span
+    class="math inline">\(p_A A\)</span>) and <strong>raw
+    capital</strong> (<span class="math inline">\(K\)</span>):</li>
+    </ul>
+    <p><span class="math display">\[
+            a = p_A* A + K.
+        \]</span></p>
+    <ul>
+    <li><span class="math inline">\(A\)</span> is the number of
+    intermediate good firms and <span class="math inline">\(p_A\)</span>
+    is the respective price, thus <span class="math inline">\(p_A*
+    A\)</span> is equity (Aktienvermögen)</li>
+    <li>Revenues from issuing shares are used by the <span
+    class="math inline">\(x\)</span>-firm to purchase a blueprint.</li>
+    <li>In equilibrium, the price of a blueprint equals the value of the
+    firm.</li>
+    <li>Raw capital <span class="math inline">\(K\)</span> is rented out
+    to the <span class="math inline">\(x\)</span>-firms.</li>
+    <li>The household chooses the consumption path <span
+    class="math inline">\(C(t)\)</span> to maximize discounted
+    utility:</li>
+    </ul>
+    <p><span class="math display">\[
+            \max \int_0^\infty \frac{C(t)^{1-\sigma}-1}{1-\sigma}\,
+    e^{-\rho t}\, dt.
+        \]</span></p>
+    <ul>
+    <li>Optimal consumption obeys the <strong>Keynes-Ramsey
+    rule</strong> (KRR):</li>
+    </ul>
+    <p><span class="math display">\[
+            \frac{\dot{C}(t)}{C(t)} = \frac{r-\rho}{\sigma}.
+        \]</span></p>
     <details class="box blue">
     <summary>The value of a firm</summary>
     <div class="box-content">
@@ -1236,34 +1928,99 @@ Endogenous growth models build a consistent framework for economic growth driven
     class="header-section-number">3.3.4</span> Final-output sector</h3>
     <p>The final-output sector (<span
     class="math inline">\(Y\)</span>-sector) consists of firms producing
-    a homogeneous good <span class="math inline">\(Y\)</span> under .
-    The production technology is given by [ Y = L_Y^{1-} _0^A x(i)^, di
-    ] where <span class="math inline">\(i \in [0,A]\)</span> is the
+    a homogeneous good <span class="math inline">\(Y\)</span> under
+    <strong>perfect competition</strong>. The production technology is
+    given by</p>
+    <p><span class="math display">\[
+        Y = L_Y^{1-\alpha} \int_0^A x(i)^\alpha \, di
+    \]</span></p>
+    <p>where <span class="math inline">\(i \in [0,A]\)</span> is the
     index of intermediate goods, <span class="math inline">\(A\)</span>
     denotes the ``number’’ of types of intermediate goods, and <span
     class="math inline">\(x(i)\)</span> is the quantity of intermediate
     goods of type <span class="math inline">\(i\)</span>.</p>
-    <p> Imposing a symmetric equilibrium <span
-    class="math inline">\(x(i) = x \;\forall\, i \in
+    <ul>
+    <li>Note that the intermediate goods are <strong>machines</strong>:
+    they serve as input factors for the final-good firm (think of
+    shovels, pickaxes, machines, etc.). Intermediate goods are
+    <strong>not</strong> consumption goods, and the final firm is not a
+    ``goods bundler’’</li>
+    <li><span class="math inline">\(A\)</span> represents the number of
+    intermediate firms, i.e. machines in the economy. A larger <span
+    class="math inline">\(A\)</span> means more intermediate firms with
+    different technologies, which raises <span
+    class="math inline">\(Y\)</span>.</li>
+    </ul>
+    <p><strong>Reduced-form technology.</strong> Imposing a symmetric
+    equilibrium <span class="math inline">\(x(i) = x \;\forall\, i \in
     [0,\dots,A]\)</span> and the market-clearing condition for raw
     capital (<span class="math inline">\(K = Ak = Ax\)</span>), the
-    production function reduces to [ Y = L_Y^{1-} _0^A x(i)^, di ; ; Y =
-    L_Y^{1-} A x^ ; ; Y = (A L_Y)^{1-} K^. ]</p>
+    production function reduces to</p>
+    <p><span class="math display">\[
+        Y = L_Y^{1-\alpha} \int_0^A x(i)^\alpha \, di
+        \;\xrightarrow{\;x(i)=x\;} \;
+        Y = L_Y^{1-\alpha} A x^\alpha
+        \;\xrightarrow{\;K=Ax\;} \;
+        Y = (A L_Y)^{1-\alpha} K^\alpha.
+    \]</span></p>
+    <ul>
+    <li>This is a <strong>Cobb-Douglas technology with labor-augmenting
+    technical change</strong>.</li>
+    <li>Increasing <span class="math inline">\(A\)</span> while holding
+    <span class="math inline">\(K = Ax\)</span> constant (by reducing
+    <span class="math inline">\(x\)</span> as <span
+    class="math inline">\(A\)</span> rises, i.e. there are more smaller
+    firms) boosts the productivity of labor.</li>
+    <li>The technology captures the basic idea that <strong>``division
+    of labor and specialization’’</strong> makes production more
+    efficient</li>
+    <li>The constraint <span class="math inline">\(K = Ax\)</span> is
+    crucial: it shows that the result ``more <span
+    class="math inline">\(A\)</span> is better’’ holds <strong>even
+    though the total amount of input factor is fixed</strong>. With
+    <span class="math inline">\(A = 1\)</span>, diminishing returns set
+    in much faster than with, say, <span class="math inline">\(A =
+    3\)</span> specialization across more varieties delays the curvature
+    of the production function.</li>
+    </ul>
     <h3 data-number="3.3.5" id="intermediate-goods-sector"><span
     class="header-section-number">3.3.5</span> Intermediate goods
     sector</h3>
     <p>The intermediate goods sector consists of producers who
-    manufacture <span class="math inline">\(x(i)\)</span>. The
-    production technology is [ x(i) = k(i), ] i.e., it takes one unit of
-    ``raw capital’’ to produce one unit of any <span
-    class="math inline">\(x(i)\)</span>. This is a trivial production
-    function. </p>
-    <p> The <span class="math inline">\(x(i)\)</span> are symmetric with
-    regard to production technology and with regard to the way they
-    enter into the production function of the final-output good. They
-    are differentiated only in the sense that they are considered from
-    the user’s perspective, implying that ``convex combinations are
-    superior’’.</p>
+    manufacture <strong>differentiated intermediate goods</strong> <span
+    class="math inline">\(x(i)\)</span>. The production technology
+    is</p>
+    <p><span class="math display">\[
+        x(i) = k(i),
+    \]</span></p>
+    <p>i.e., it takes one unit of ``raw capital’’ to produce one unit of
+    any <span class="math inline">\(x(i)\)</span>. This is a trivial
+    <strong>constant-returns-to-scale</strong> production function.
+    <strong>The marginal cost of any <span
+    class="math inline">\(x\)</span> therefore equals <span
+    class="math inline">\(r\)</span>, the rental price of
+    capital.</strong></p>
+    <ul>
+    <li>Before producing and marketing <span
+    class="math inline">\(x\)</span>, firms must purchase a
+    <strong>blueprint</strong> (design). The blueprint acts as a
+    <strong>fixed cost of market entry</strong>: a firm needs a
+    blueprint in order to produce a new machine.</li>
+    <li>The <span class="math inline">\(x\)</span>-market is
+    <strong>monopolistically competitive</strong>: there is a large
+    number of producers (one producer per variety) offering imperfect
+    substitutes.</li>
+    <li><span class="math inline">\(x\)</span>-producers sell
+    intermediate goods <span class="math inline">\(x(i)\)</span> to
+    <span class="math inline">\(Y\)</span>-producers by charging a price
+    <span class="math inline">\(p(i)\)</span>.</li>
+    </ul>
+    <p><em>Note:</em> The <span class="math inline">\(x(i)\)</span> are
+    symmetric with regard to production technology and with regard to
+    the way they enter into the production function of the final-output
+    good. They are differentiated only in the sense that they are
+    considered <strong>imperfect substitutes</strong> from the user’s
+    perspective, implying that ``convex combinations are superior’’.</p>
     <h4 data-number="3.3.5.1"
     id="flow-of-payments-between-hh-x-producer-and-y-producer."><span
     class="header-section-number">3.3.5.1</span> Flow of payments
@@ -1272,20 +2029,41 @@ Endogenous growth models build a consistent framework for economic growth driven
     <p>The interaction between households, intermediate-goods producers,
     and final-output producers can be summarized as a circular flow:</p>
     <p><img src="images/flows.png" /></p>
+    <ul>
+    <li>The <span class="math inline">\(x\)</span>-producer rents
+    differentiated machines to the <span
+    class="math inline">\(Y\)</span>-producers. At the end of the
+    period, the <span class="math inline">\(Y\)</span>-producer returns
+    these machines plus the rental payment.</li>
+    <li>The <span class="math inline">\(x\)</span>-producer then returns
+    raw capital (transforming <span class="math inline">\(x\)</span>’s
+    back into <span class="math inline">\(k\)</span>) plus the rental
+    payment to the household. The difference between revenues and costs
+    is the firm’s <strong>profit</strong>.</li>
+    </ul>
     <details class="box blue">
     <summary>The Role of $A$: Returns to Specialization</summary>
     <div class="box-content">
     <p>Consider the discrete version of the production function with
     intermediate goods index <span class="math inline">\(i \in \{1,
-    \dots, A\}\)</span>: [ Y = L^{1-} <em>{i=1}^{A} x_i^, &lt; &lt; 1, ]
-    subject to the resource constraint [ </em>{i=1}^{A} x_i = K, ] i.e.,
-    the total amount of raw capital available is fixed at <span
+    \dots, A\}\)</span>:</p>
+    <p><span class="math display">\[
+        Y = L^{1-\alpha} \sum_{i=1}^{A} x_i^\alpha, \qquad 0 &lt; \alpha
+    &lt; 1,
+    \]</span></p>
+    <p>subject to the resource constraint</p>
+    <p><span class="math display">\[
+        \sum_{i=1}^{A} x_i = K,
+    \]</span></p>
+    <p>i.e., the total amount of raw capital available is fixed at <span
     class="math inline">\(K\)</span>. Now compare three economies that
-    all share the <span class="math inline">\(K\)</span> but differ in
-    the number of intermediate-goods varieties <span
-    class="math inline">\(A\)</span>: <span
-    class="math display">\[\begin{align*}
-        A=1: \quad &amp; Y = L^{1-\alpha} K^\alpha \\[2pt]
+    all share the <strong>same total input</strong> <span
+    class="math inline">\(K\)</span> but differ in the number of
+    intermediate-goods varieties <span class="math inline">\(A\)</span>:
+    <span class="math display">\[\begin{align*}
+        A=1: \quad &amp; Y = L^{1-\alpha} K^\alpha \
+
+    $$2pt]
         A=2: \quad &amp; Y = L^{1-\alpha} \left[ \left(\tfrac{1}{2}
     K\right)^\alpha + \left(\tfrac{1}{2} K\right)^\alpha \right] =
     L^{1-\alpha} \, 2^{1-\alpha} K^\alpha \\[2pt]
@@ -1294,8 +2072,9 @@ Endogenous growth models build a consistent framework for economic growth driven
     \left(\tfrac{1}{3} K\right)^\alpha \right] = L^{1-\alpha} \,
     3^{1-\alpha} K^\alpha
     \end{align*}\]</span> The total amount of intermediate goods <span
-    class="math inline">\(A x_i = K\)</span> is ; what changes is only
-    how this fixed input is . Yet output <span
+    class="math inline">\(A x_i = K\)</span> is <strong>always the
+    same</strong>; what changes is only how this fixed input is
+    <em>spread across varieties</em>. Yet output <span
     class="math inline">\(Y\)</span> is strictly higher the larger is
     <span class="math inline">\(A\)</span>. The reason is the concavity
     of <span class="math inline">\(x_i^\alpha\)</span> (with <span
@@ -1311,30 +2090,93 @@ Endogenous growth models build a consistent framework for economic growth driven
     </details>
     <h3 data-number="3.3.6" id="rd-sector"><span
     class="header-section-number">3.3.6</span> R&amp;D Sector</h3>
-    <p>Firms in the R&amp;D sector search for i.e. blueprints / designs,
-    needed by firms for market entry. The market for blueprints is .
-    Note that the model captures , not quality expansion. \</p>
-    <p>The R&amp;D technology is given by [ = <em>{} </em>{} _{} ] where
-    <span class="math inline">\(\dot{A}\)</span> denotes the number of
-    machine types per unit of time.</p>
+    <p>Firms in the R&amp;D sector search for <strong>ideas</strong>
+    i.e. blueprints / designs, needed by firms for market entry. The
+    market for blueprints is <strong>perfectly competitive</strong>.
+    Note that the model captures <em>variety expansion</em>, not quality
+    expansion. \</p>
+    <p>The R&amp;D technology is given by [ = <em>{} </em>{} _{} $$</p>
+    <p>where <span class="math inline">\(\dot{A}\)</span> denotes the
+    number of <em>newly invented</em> machine types per unit of
+    time.</p>
+    <ul>
+    <li><span class="math inline">\(A\)</span> carries <strong>two
+    meanings</strong> simultaneously: (1) the number of machine
+    <em>types</em> which is a technological variable and (2) a
+    <em>measure of knowledge</em>. The latter generates the
+    <strong>intertemporal knowledge spill-over</strong>, i.e. existing
+    knowledge <span class="math inline">\(A\)</span> raises the
+    productivity of researchers <span
+    class="math inline">\(L_A\)</span>, so <span
+    class="math inline">\(\dot{A}\)</span> is
+    <strong>self-amplifying</strong> (premise iii).</li>
+    <li> <span class="math inline">\(\rightarrow\)</span> Because <span
+    class="math inline">\(A\)</span> is a <strong>stock
+    variable</strong> (the number of machine types existing at a point
+    in time), whereas <span class="math inline">\(Y\)</span> is a
+    <strong>flow variable</strong>. The R&amp;D technology describes the
+    rate at which new types are added, hence <span
+    class="math inline">\(\dot{A}\)</span>.</li>
+    </ul>
     <h4 data-number="3.3.6.1" id="double-knife-edge-restriction."><span
     class="header-section-number">3.3.6.1</span> Double knife-edge
     restriction.</h4>
     <p>The partial elasticities of <span
     class="math inline">\(A\)</span> and <span
     class="math inline">\(L_A\)</span> in the production of <span
-    class="math inline">\(\dot{A}\)</span> are both equal to unity: [ =
-    1 = 1. ]</p>
+    class="math inline">\(\dot{A}\)</span> are both equal to unity:</p>
+    <p><span class="math display">\[
+        \text{(i)} \quad \frac{\partial \ln \dot{A}}{\partial \ln A} = 1
+    \qquad \text{and} \qquad \text{(ii)} \quad \frac{\partial \ln
+    \dot{A}}{\partial \ln L_A} = 1.
+    \]</span></p>
     <h3 data-number="3.3.7"
     id="general-equilibrium-and-reduced-dynamic-system"><span
     class="header-section-number">3.3.7</span> General Equilibrium and
     Reduced Dynamic System</h3>
-    A general (market) equilibrium for this economy consists of time
-    paths for [ {L_Y(t),, L_A(t),, {x(i,t)}<em>{i=0}^{A},, A(t),, K(t),,
-    Y(t),, a(t),, C(t)}</em>{t=0}^{} ] and [ {w_Y(t),, w_{RD}(t),,
-    r(t),, p_A(t),, {p(i,t)}<em>{i=0}^{A}}</em>{t=0}^{} ] such that:
-    <p>The equilibrium conditions can be condensed into a system of :
-    <span class="math display">\[\begin{align*}
+    <p>A general (market) equilibrium for this economy consists of time
+    paths for </p>
+    <p><span class="math display">\[
+        \{L_Y(t),\, L_A(t),\, \{x(i,t)\}_{i=0}^{A},\, A(t),\, K(t),\,
+    Y(t),\, a(t),\, C(t)\}_{t=0}^{\infty}
+    \]</span></p>
+    <p>and </p>
+    <p><span class="math display">\[
+        \{w_Y(t),\, w_{RD}(t),\, r(t),\, p_A(t),\,
+    \{p(i,t)\}_{i=0}^{A}\}_{t=0}^{\infty}
+    \]</span></p>
+    <p>such that:</p>
+    <ol type="1">
+    <li>Final goods producers, intermediate goods producers, and R&amp;D
+    firms maximize profits <span class="math inline">\(\forall\, t \in
+    [0,\infty]\)</span>.</li>
+    <li>Households maximize lifetime utility <span
+    class="math inline">\(U = \int_0^\infty u(c) \cdot e^{-\rho t}\,
+    dt\)</span>.</li>
+    <li>The capital market <strong>no-arbitrage condition</strong>
+    holds:</li>
+    </ol>
+    <p><span class="math display">\[
+            \frac{\dot{p}_A}{p_A} + \frac{\pi}{p_A} = r \quad \forall\,
+    t \in [0,\infty].
+        \]</span></p>
+    <pre><code>The household holds two assets (equity and raw capital) and must earn the same return on both. The return on equity is the sum of the **capital gain** $\dot{p}_A/p_A$ and the **dividend yield** $\pi/p_A$, which must equal the rental rate $r$ on raw capital. Otherwise the household would shift its entire portfolio into the higher-yielding asset.</code></pre>
+    <ol type="1">
+    <li>Capital markets clear: <span class="math inline">\(K(t) =
+    \int_0^A k(i)\, di\)</span>, and issued shares <span
+    class="math inline">\(p_A(t) A(t)\)</span> are held by the household
+    <span class="math inline">\(\forall\, t \in
+    [0,\infty]\)</span>.</li>
+    <li>Labor market clears: <span class="math inline">\(L(t) = L_Y(t) +
+    L_A(t) \quad \forall\, t \in [0,\infty]\)</span>.</li>
+    <li>Goods markets clear: <span class="math inline">\(x_S(i) = x_D(i)
+    \;\forall\, i \in [0,A]\)</span> and <span
+    class="math inline">\(Y(t) = I(t) + C(t) \quad \forall\, t \in
+    [0,\infty]\)</span>.</li>
+    </ol>
+    <p>The equilibrium conditions can be condensed into a system of
+    <strong>6 equations in 6 endogenous variables</strong>: <span
+    class="math display">\[\begin{align*}
         \dot{C}     &amp;=
     \frac{C}{\sigma}(r-\rho)         &amp;&amp;\text{(Keynes-Ramsey
     rule)} \\
@@ -1358,43 +2200,82 @@ Endogenous growth models build a consistent framework for economic growth driven
     <h4 data-number="3.3.7.2" id="equilibrium-relations"><span
     class="header-section-number">3.3.7.2</span> Equilibrium
     relations</h4>
-    <p>[ r = ^2 ; w = (1-); = (1-); Y = A<sup>{1-}(L-L_A)</sup>{1-} K^.
-    ]</p>
+    <p><span class="math display">\[
+        r = \alpha^2 \frac{Y}{K}; \qquad
+        w = (1-\alpha)\frac{Y}{L-L_A}; \qquad
+        \pi = (1-\alpha)\alpha \frac{Y}{A}; \qquad
+        Y = A^{1-\alpha}(L-L_A)^{1-\alpha} K^\alpha.
+    \]</span></p>
     <h3 data-number="3.3.8" id="long-run-growth-rate"><span
     class="header-section-number">3.3.8</span> Long-run growth rate</h3>
-    <p>Along a , the Romer model is equivalent to a neoclassical growth
-    model with labor-augmenting technical progress. Recall the reduced
-    form [ Y = (A L_Y)^{1-} K^. ] Setting up the reduced dynamic system
-    shows that this is equivalent to a Ramsey model (Use <span
+    <p>Along a <strong>balanced growth path</strong>, the Romer model is
+    equivalent to a neoclassical growth model with labor-augmenting
+    technical progress. Recall the reduced form</p>
+    <p><span class="math display">\[
+        Y = (A L_Y)^{1-\alpha} K^\alpha.
+    \]</span></p>
+    <p>Setting up the reduced dynamic system shows that this is
+    equivalent to a Ramsey model (Use <span
     class="math inline">\(\dot{K}\)</span>, <span
     class="math inline">\(\dot{C}\)</span>, and <span
     class="math inline">\(\dot{A}\)</span> equations).</p>
     <p>On the balanced growth path, all variables grow at the same rate
-    <span class="math inline">\(g\)</span>: [ ^* = ^* = ^* = ^* = g, :=
-    X {Y, K, C, A}. ] The long-run growth rate of <span
+    <span class="math inline">\(g\)</span>:</p>
+    <p><span class="math display">\[
+        \hat{Y}^* = \hat{K}^* = \hat{C}^* = \hat{A}^* = g, \qquad
+    \text{where } \hat{X} := \frac{\dot{X}}{X} \text{ for all } X \in
+    \{Y, K, C, A\}.
+    \]</span></p>
+    <p>The long-run growth rate of <span
     class="math inline">\(A\)</span> (recall <span
-    class="math inline">\(\dot{A} = \eta A L_A\)</span>) reads [ ^* =
-    L_A^*. ] The interesting question therefore concerns the , since it
-    pins down the long-run growth rate.</p>
+    class="math inline">\(\dot{A} = \eta A L_A\)</span>) reads</p>
+    <p><span class="math display">\[
+        \hat{A}^* = \eta L_A^*.
+    \]</span></p>
+    <p>The interesting question therefore concerns the
+    <strong>determination of <span
+    class="math inline">\(L_A^*\)</span></strong>, since it pins down
+    the long-run growth rate.</p>
     <h3 data-number="3.3.9"
     id="solution-strategy-for-the-balanced-growth-path"><span
     class="header-section-number">3.3.9</span> Solution strategy for the
     balanced growth path</h3>
-    The steady-state growth rate is determined by combining a
-    production-side and a consumption-side relation:
+    <p>The steady-state growth rate is determined by combining a
+    production-side and a consumption-side relation:</p>
+    <ol type="1">
+    <li>The labor-market equilibrium condition <span
+    class="math inline">\(w_Y = w_{RD}\)</span> yields a relation <span
+    class="math inline">\(r_{\text{prod}} = f(g)\)</span> describing
+    <strong>equilibrium on the production side</strong>.</li>
+    <li>The Keynes-Ramsey rule yields <span
+    class="math inline">\(r_{\text{cons}} = \sigma g + \rho\)</span>,
+    describing <strong>equilibrium on the consumption
+    side</strong>.</li>
+    <li><strong>Simultaneous equilibrium</strong> on both sides (<span
+    class="math inline">\(r_{\text{prod}} = r_{\text{cons}}\)</span>)
+    then allows determination of <span class="math inline">\(r\)</span>
+    and <span class="math inline">\(g\)</span>.</li>
+    </ol>
     <h3 data-number="3.3.10"
     id="equilibrium-in-the-labor-market-w_y-w_rd"><span
     class="header-section-number">3.3.10</span> Equilibrium in the labor
     market $w_Y = w_{RD</h3>
-    <p>$} Under perfect competition, labor earns its (note that the
-    final-good price is the numéraire <span class="math inline">\(p_Y =
-    1\)</span>): [ w_Y = p_Y = (1-) L_Y^{-} A x^, ] recalling that in
-    symmetric equilibrium the technology reads <span
-    class="math inline">\(Y = L_Y^{1-\alpha} A x^\alpha\)</span>. For
-    the R&amp;D sector, the wage equals the value of the marginal
-    contribution to invention: [ w_{RD} = p_A = p_A A. ] The remaining
-    task is to determine the <span
-    class="math inline">\(p_A\)</span>.</p>
+    <p>$} Under perfect competition, labor earns its <strong>value
+    marginal product</strong> (note that the final-good price is the
+    numéraire <span class="math inline">\(p_Y = 1\)</span>):</p>
+    <p><span class="math display">\[
+        w_Y = p_Y \frac{\partial Y}{\partial L_Y} = (1-\alpha)
+    L_Y^{-\alpha} A x^\alpha,
+    \]</span></p>
+    <p>recalling that in symmetric equilibrium the technology reads
+    <span class="math inline">\(Y = L_Y^{1-\alpha} A x^\alpha\)</span>.
+    For the R&amp;D sector, the wage equals the value of the marginal
+    contribution to invention:</p>
+    <p><span class="math display">\[
+        w_{RD} = p_A \frac{\partial \dot{A}}{\partial L_A} = p_A \eta A.
+    \]</span></p>
+    <p>The remaining task is to determine the <strong>price of
+    blueprints</strong> <span class="math inline">\(p_A\)</span>.</p>
     <h3 data-number="3.3.11"
     id="price-of-a-blueprint-and-equilibrium-profits"><span
     class="header-section-number">3.3.11</span> Price of a blueprint and
@@ -1402,47 +2283,86 @@ Endogenous growth models build a consistent framework for economic growth driven
     <p>Since <span class="math inline">\(\pi\)</span> and <span
     class="math inline">\(r\)</span> are constant in the steady state,
     the blueprint price equals the present value of the firm’s profit
-    stream: [ p_A(t) = <em>t^</em>{t} _{} d. ] With both <span
-    class="math inline">\(\pi\)</span> and <span
-    class="math inline">\(r\)</span> constant, this simplifies to [
-    p_A(t) = _t<sup>e</sup>{-r(- t)},d= . ]</p>
+    stream:</p>
+    <p><span class="math display">\[
+        p_A(t) = \int_t^\infty \underbrace{\pi(\tau)}_{\text{profit at
+    }\tau \geq t} \cdot \underbrace{e^{-\int_t^\tau
+    r(u)\,du}}_{\text{cumulative discount factor}} d\tau.
+    \]</span></p>
+    <p>With both <span class="math inline">\(\pi\)</span> and <span
+    class="math inline">\(r\)</span> constant, this simplifies to</p>
+    <p><span class="math display">\[
+        p_A(t) = \int_t^\infty \pi e^{-r(\tau - t)}\,d\tau =
+    \frac{\pi}{r}.
+    \]</span></p>
     <details class="box red">
     <summary>Key Result: Price of a Blueprint</summary>
     <div class="box-content">
     <p>In the steady state, the blueprint price equals the discounted
-    profit stream of the intermediate-goods firm: [ ] This pins down the
-    value of the firm and is the .</p>
+    profit stream of the intermediate-goods firm:</p>
+    <p><span class="math display">\[
+        \boxed{\, p_A = \frac{\pi}{r} \,}
+    \]</span></p>
+    <p>This pins down the value of the firm and is the <strong>link
+    between the R&amp;D sector and the rest of the model</strong>.</p>
     </div>
     </details>
     <h4 data-number="3.3.11.1" id="profit-of-the-x-producer."><span
     class="header-section-number">3.3.11.1</span> Profit of the <span
     class="math inline">\(x\)</span>-producer.</h4>
-    <p>The intermediate-goods firm earns [ = _{} x - r x, p_D(x) =
-    L_Y^{1-} x^{}. (**) ] Since the <span
-    class="math inline">\(x\)</span>-producer is a monopolist in its
-    variety, it chooses the supply price as a markup <span
-    class="math inline">\(1/\alpha\)</span> over marginal cost <span
-    class="math inline">\(r\)</span>: [ p_S = r. ] In equilibrium <span
-    class="math inline">\(p_D = p_S\)</span>, hence <span
-    class="math inline">\(r = \alpha p_S\)</span>, which combined with
-    <span class="math inline">\((**)\)</span> gives equilibrium profits
-    [ = (p_D - p_S) x = (1-) p_D x = (1-)L_Y^{1-} x^. ]</p>
+    <p>The intermediate-goods firm earns</p>
+    <p><span class="math display">\[
+        \pi = \underbrace{p_D(x)}_{\substack{\text{rental price
+    paid}\\\text{by }Y\text{-producer}}} x - r x, \qquad \text{with }
+    p_D(x) = \alpha L_Y^{1-\alpha} x^{\alpha-1}. \qquad (**)
+    \]</span></p>
+    <p>Since the <span class="math inline">\(x\)</span>-producer is a
+    monopolist in its variety, it chooses the supply price as a markup
+    <span class="math inline">\(1/\alpha\)</span> over marginal cost
+    <span class="math inline">\(r\)</span>:</p>
+    <p><span class="math display">\[
+        p_S = \frac{1}{\alpha} r.
+    \]</span></p>
+    <p>In equilibrium <span class="math inline">\(p_D = p_S\)</span>,
+    hence <span class="math inline">\(r = \alpha p_S\)</span>, which
+    combined with <span class="math inline">\((**)\)</span> gives
+    equilibrium profits</p>
+    <p><span class="math display">\[
+        \pi = (p_D - \alpha p_S) x = (1-\alpha) p_D x = (1-\alpha)\alpha
+    L_Y^{1-\alpha} x^\alpha.
+    \]</span></p>
     <details class="box blue">
     <summary>Derivation: Demand Curve $p_D(x) = \alpha L_Y^{1-\alpha} x^{\alpha-1}$</summary>
     <div class="box-content">
     <p>The demand curve for intermediate good <span
     class="math inline">\(i\)</span> follows from the final-good
     producer’s profit-maximization problem.</p>
-    <p> The <span class="math inline">\(Y\)</span>-producer solves [
-    <em>{x_i} ; L^{1-} </em>{i=1}^A x_i^- _{i=1}^A p_i x_i. ] The
-    first-order condition with respect to <span
-    class="math inline">\(x_i\)</span> gives [ L^{1-} x_i^{} = p_i
-    p_D(x_i) = L^{1-} x_i^{}. ]</p>
-    <p> The problem becomes [ _{x()} _0^A di. ] Differentiating under
-    the integral sign yields the same inverse demand function [ p(i) =
-    L_Y^{1-} x(i)^{-+1(-1)} = L_Y^{1-} x(i)^{}. ] The <span
-    class="math inline">\(x\)</span>-producer takes this demand curve as
-    given when choosing its profit-maximizing supply price.</p>
+    <p><em>Discrete case.</em> The <span
+    class="math inline">\(Y\)</span>-producer solves</p>
+    <p><span class="math display">\[
+        \max_{x_i} \; L^{1-\alpha} \sum_{i=1}^A x_i^\alpha -
+    \sum_{i=1}^A p_i x_i.
+    \]</span></p>
+    <p>The first-order condition with respect to <span
+    class="math inline">\(x_i\)</span> gives</p>
+    <p><span class="math display">\[
+        \alpha L^{1-\alpha} x_i^{\alpha-1} = p_i \quad \Longrightarrow
+    \quad p_D(x_i) = \alpha L^{1-\alpha} x_i^{\alpha-1}.
+    \]</span></p>
+    <p><em>Continuous case.</em> The problem becomes</p>
+    <p><span class="math display">\[
+        \max_{x(\cdot)} \int_0^A \left[ L_Y^{1-\alpha} x(i)^\alpha -
+    p(i) x(i) \right] di.
+    \]</span></p>
+    <p>Differentiating under the integral sign yields the same inverse
+    demand function</p>
+    <p><span class="math display">\[
+        p(i) = \alpha L_Y^{1-\alpha} x(i)^{-\alpha+1\cdot(-1)} = \alpha
+    L_Y^{1-\alpha} x(i)^{\alpha-1}.
+    \]</span></p>
+    <p>The <span class="math inline">\(x\)</span>-producer takes this
+    demand curve as given when choosing its profit-maximizing supply
+    price.</p>
     </div>
     </details>
     <details class="box blue">
@@ -1453,19 +2373,32 @@ Endogenous growth models build a consistent framework for economic growth driven
     class="math inline">\(p_D(x) = \alpha L_Y^{1-\alpha}
     x^{\alpha-1}\)</span> derived from the <span
     class="math inline">\(Y\)</span>-producer’s optimization. Its
-    profit-maximization problem is [ _x ; = p_D(x), x - r x = L_Y^{1-}
-    x^- r x, ] where the marginal cost of producing one unit of <span
+    profit-maximization problem is</p>
+    <p><span class="math display">\[
+        \max_x \; \pi = p_D(x)\, x - r x = \alpha L_Y^{1-\alpha}
+    x^\alpha - r x,
+    \]</span></p>
+    <p>where the marginal cost of producing one unit of <span
     class="math inline">\(x\)</span> equals the rental rate <span
     class="math inline">\(r\)</span> (recall the linear technology <span
     class="math inline">\(x(i) = k(i)\)</span>).</p>
     <p>The first-order condition with respect to <span
-    class="math inline">\(x\)</span> is [ ^2 L_Y^{1-} x^{} - r = 0 _{=
-    p_S} = r. ] Solving for the optimal supply price: [ ] The monopolist
-    charges a of <span class="math inline">\(1/\alpha &gt; 1\)</span>
-    over marginal cost <span class="math inline">\(r\)</span>. The
-    markup is larger the smaller is <span
-    class="math inline">\(\alpha\)</span>, i.e., the less substitutable
-    the varieties are – standard monopoly intuition.</p>
+    class="math inline">\(x\)</span> is</p>
+    <p><span class="math display">\[
+        \alpha^2 L_Y^{1-\alpha} x^{\alpha-1} - r = 0 \quad
+    \Longrightarrow \quad \alpha \cdot \underbrace{\alpha L_Y^{1-\alpha}
+    x^{\alpha-1}}_{= p_S} = r.
+    \]</span></p>
+    <p>Solving for the optimal supply price:</p>
+    <p><span class="math display">\[
+        \boxed{\; p_S = \frac{1}{\alpha} r \;}
+    \]</span></p>
+    <p>The monopolist charges a <strong>markup</strong> of <span
+    class="math inline">\(1/\alpha &gt; 1\)</span> over marginal cost
+    <span class="math inline">\(r\)</span>. The markup is larger the
+    smaller is <span class="math inline">\(\alpha\)</span>, i.e., the
+    less substitutable the varieties are – standard monopoly
+    intuition.</p>
     </div>
     </details>
     <h3 data-number="3.3.12"
@@ -1475,18 +2408,31 @@ Endogenous growth models build a consistent framework for economic growth driven
     <p>Plugging <span class="math inline">\(p_A = \pi/r\)</span> and the
     equilibrium profit into <span class="math inline">\(w_{RD} = p_A
     \eta A\)</span>, and equating with <span
-    class="math inline">\(w_Y\)</span>: [ <em>{Y/L_Y} ;=; </em>{p_A}
-    _{/L_A}. ] Solving for <span class="math inline">\(r\)</span>: [ r =
-    L_Y. ] Using labor-market clearing <span class="math inline">\(L_Y =
-    L - L_A\)</span> and the R&amp;D technology in steady state <span
-    class="math inline">\(L_A = g/\eta\)</span>: [ r = L_Y = (L - L_A) =
-    L - g. ] This relation describes . Note that <span
-    class="math inline">\(g\)</span> and <span
-    class="math inline">\(r\)</span> are : faster growth requires more
-    researchers <span class="math inline">\(L_A\)</span>, which leaves
-    fewer workers for the final-goods sector, lowering the marginal
-    product of capital and hence <span
-    class="math inline">\(r\)</span>.</p>
+    class="math inline">\(w_Y\)</span>:</p>
+    <p><span class="math display">\[
+        \underbrace{(1-\alpha) L_Y^{-\alpha} A x^\alpha}_{\partial
+    Y/\partial L_Y} \;=\; \underbrace{\frac{(1-\alpha)\alpha
+    L_Y^{1-\alpha} x^\alpha}{r}}_{p_A} \cdot \underbrace{\eta
+    A}_{\partial \dot{A}/\partial L_A}.
+    \]</span></p>
+    <p>Solving for <span class="math inline">\(r\)</span>:</p>
+    <p><span class="math display">\[
+        r = \eta \alpha L_Y.
+    \]</span></p>
+    <p>Using labor-market clearing <span class="math inline">\(L_Y = L -
+    L_A\)</span> and the R&amp;D technology in steady state <span
+    class="math inline">\(L_A = g/\eta\)</span>:</p>
+    <p><span class="math display">\[
+        r = \eta \alpha L_Y = \eta \alpha (L - L_A) = \eta \alpha L -
+    \alpha g.
+    \]</span></p>
+    <p>This relation describes <strong>equilibrium on the production
+    side</strong>. Note that <span class="math inline">\(g\)</span> and
+    <span class="math inline">\(r\)</span> are <strong>negatively
+    related</strong>: faster growth requires more researchers <span
+    class="math inline">\(L_A\)</span>, which leaves fewer workers for
+    the final-goods sector, lowering the marginal product of capital and
+    hence <span class="math inline">\(r\)</span>.</p>
     <h3 data-number="3.3.13" id="steady-state-growth-rate"><span
     class="header-section-number">3.3.13</span> Steady-state growth
     rate</h3>
@@ -1494,30 +2440,42 @@ Endogenous growth models build a consistent framework for economic growth driven
     class="math inline">\(r = \eta\alpha L - \alpha g\)</span> together
     with the consumption-side Keynes-Ramsey relation <span
     class="math inline">\(r = \sigma g + \rho\)</span> for <span
-    class="math inline">\(g\)</span>: [ L - g = g + g = . ] Since growth
-    cannot turn negative in this model, the complete solution is</p>
+    class="math inline">\(g\)</span>:</p>
+    <p><span class="math display">\[
+        \eta\alpha L - \alpha g = \sigma g + \rho \quad \Longrightarrow
+    \quad g = \frac{\eta\alpha L - \rho}{\sigma + \alpha}.
+    \]</span></p>
+    <p>Since growth cannot turn negative in this model, the complete
+    solution is</p>
     <details class="box red">
     <summary>Key Result: Romer Steady-State Growth Rate</summary>
     <div class="box-content">
-    <p>[ ] Long-run growth requires the economy to be in the sense <span
+    <p><span class="math display">\[
+        \boxed{\; g_M = \begin{cases} \dfrac{\eta\alpha L - \rho}{\sigma
+    + \alpha} &amp; \text{for } \eta\alpha L &gt; \rho \\[4pt] 0 &amp;
+    \text{for } \eta\alpha L \leq \rho \end{cases} \;}
+    \]</span></p>
+    <p><strong>Threshold condition.</strong> Long-run growth requires
+    the economy to be <em>large enough</em> in the sense <span
     class="math inline">\(\eta \alpha L &gt; \rho\)</span> (critical
     threshold for labor).</p>
-    <p> Provided <span class="math inline">\(\eta \alpha L &gt;
-    \rho\)</span>, larger economies (size measured by <span
-    class="math inline">\(L\)</span>) grow at a higher rate. Intuition:
-    more researchers can be employed without sacrificing too much
-    final-good production, so <span
+    <p><strong>Scale effect.</strong> Provided <span
+    class="math inline">\(\eta \alpha L &gt; \rho\)</span>, larger
+    economies (size measured by <span class="math inline">\(L\)</span>)
+    grow at a higher rate. Intuition: more researchers can be employed
+    without sacrificing too much final-good production, so <span
     class="math inline">\(\dot{A}\)</span> is higher.</p>
     </div>
     </details>
     <details class="box green">
     <summary>Nice to Know: Romer's H vs. L</summary>
     <div class="box-content">
-    <p>In the original Romer (1990) paper, there is (<span
-    class="math inline">\(H\)</span>) and (<span
+    <p>In the original Romer (1990) paper, there is <strong>human
+    capital</strong> (<span class="math inline">\(H\)</span>) and
+    <strong>unskilled labor</strong> (<span
     class="math inline">\(L\)</span>), so that both the threshold effect
-    and the scale effect are associated with rather than (unskilled)
-    labor.</p>
+    and the scale effect are associated with <em>human capital</em>
+    rather than (unskilled) labor.</p>
     </div>
     </details>
     <h3 data-number="3.3.14"
@@ -1554,9 +2512,14 @@ Endogenous growth models build a consistent framework for economic growth driven
     class="header-section-number">3.3.14.2</span> Wage subsidy.</h4>
     <p>If the government subsidizes R&amp;D wages at rate <span
     class="math inline">\(s_A\)</span>, the FOC of the typical R&amp;D
-    firm becomes [ (1-s_A) w_{RD} = A w_{RD} = A. ] The <span
-    class="math inline">\(w_{RD}\)</span>-curve shifts up, the
-    equilibrium moves toward higher <span
+    firm becomes</p>
+    <p><span class="math display">\[
+        (1-s_A) w_{RD} = \frac{(1-\alpha)\alpha L_Y^{1-\alpha}
+    x^\alpha}{r} \eta A \quad \Longrightarrow \quad w_{RD} =
+    \frac{(1-\alpha)\alpha L_Y^{1-\alpha} x^\alpha}{r(1-s_A)}\eta A.
+    \]</span></p>
+    <p>The <span class="math inline">\(w_{RD}\)</span>-curve shifts up,
+    the equilibrium moves toward higher <span
     class="math inline">\(L_A\)</span> and lower <span
     class="math inline">\(L_Y\)</span>, raising the steady-state growth
     rate.</p>
@@ -1565,21 +2528,31 @@ Endogenous growth models build a consistent framework for economic growth driven
     <summary>Derivation: Effect of an R&D Wage Subsidy</summary>
     <div class="box-content">
     <p>Suppose the government subsidizes R&amp;D wages at rate <span
-    class="math inline">\(s_A\)</span>. The subsidy is paid to the :
-    workers still receive the market wage <span
-    class="math inline">\(w_{RD}\)</span>, but the firm only pays <span
-    class="math inline">\((1-s_A) w_{RD}\)</span> per researcher, with
-    the government covering the remainder <span
+    class="math inline">\(s_A\)</span>. The subsidy is paid to the
+    <strong>R&amp;D firm</strong>: workers still receive the market wage
+    <span class="math inline">\(w_{RD}\)</span>, but the firm only pays
+    <span class="math inline">\((1-s_A) w_{RD}\)</span> per researcher,
+    with the government covering the remainder <span
     class="math inline">\(s_A w_{RD}\)</span>. \\ R&amp;D firm’s
     problem, taking <span class="math inline">\(w_{RD}\)</span> as
-    given:<br />
-    [ <em>{L_A} ; {, p_A (L_A) ;-; (1-s_A), w</em>{RD}, L_A ,}, (L_A) =
-    A L_A. ] The first-order condition with respect to <span
-    class="math inline">\(L_A\)</span> is [ p_A = (1-s_A) w_{RD} p_A A =
-    (1-s_A) w_{RD}. ] Solving for <span
-    class="math inline">\(w_{RD}\)</span> and substituting <span
-    class="math inline">\(p_A = \pi/r = (1-\alpha)\alpha L_Y^{1-\alpha}
-    x^\alpha / r\)</span>: [ w_{RD} = = , A. ]</p>
+    given:</p>
+    <p><span class="math display">\[
+        \max_{L_A} \; \Big\{\, p_A \dot{A}(L_A) \;-\; (1-s_A)\, w_{RD}\,
+    L_A \,\Big\}, \qquad \text{with } \dot{A}(L_A) = \eta A L_A.
+    \]</span></p>
+    <p>The first-order condition with respect to <span
+    class="math inline">\(L_A\)</span> is</p>
+    <p><span class="math display">\[
+        p_A \cdot \frac{\partial \dot{A}}{\partial L_A} = (1-s_A) w_{RD}
+    \quad \Longrightarrow \quad p_A \eta A = (1-s_A) w_{RD}.
+    \]</span></p>
+    <p>Solving for <span class="math inline">\(w_{RD}\)</span> and
+    substituting <span class="math inline">\(p_A = \pi/r =
+    (1-\alpha)\alpha L_Y^{1-\alpha} x^\alpha / r\)</span>:</p>
+    <p><span class="math display">\[
+        w_{RD} = \frac{p_A \eta A}{1-s_A} = \frac{(1-\alpha)\alpha
+    L_Y^{1-\alpha} x^\alpha}{r(1-s_A)}\, \eta A.
+    \]</span></p>
     <p>The subsidy corrects the two market imperfections (knowledge
     spill-over + incomplete appropriation of consumer surplus) that
     cause the decentralized growth rate <span
@@ -1605,8 +2578,11 @@ Endogenous growth models build a consistent framework for economic growth driven
     <details class="box blue">
     <summary>Exercise: Effect of $s_A = 0.2$ on the $g$-$r$ Diagram</summary>
     <div class="box-content">
-    <p>With a wage subsidy, the production-side relation becomes [ g = ,
-    ] while the consumption-side relation <span class="math inline">\(g
+    <p>With a wage subsidy, the production-side relation becomes</p>
+    <p><span class="math display">\[
+        g = \frac{\eta\alpha L - r(1-s_A)}{\alpha},
+    \]</span></p>
+    <p>while the consumption-side relation <span class="math inline">\(g
     = (r-\rho)/\sigma\)</span> is unaffected. \\ Graphical effect: The
     production-side curve rotates: its slope flattens from <span
     class="math inline">\(-1/\alpha\)</span> to <span
@@ -1614,11 +2590,17 @@ Endogenous growth models build a consistent framework for economic growth driven
     class="math inline">\(r\)</span>-intercept shifts outward from <span
     class="math inline">\(\eta\alpha L\)</span> to <span
     class="math inline">\(\eta\alpha L/(1-s_A)\)</span>. The
-    consumption-side curve stays fixed. \\ Solving simultaneously yields
-    [ g^* = , r^* = . ] Both <span class="math inline">\(g^*\)</span>
-    and <span class="math inline">\(r^*\)</span> relative to the
-    no-subsidy benchmark. The subsidy lowers the effective labor cost of
-    R&amp;D firms, who hire more researchers. Hence <span
+    consumption-side curve stays fixed. \\ Solving simultaneously
+    yields</p>
+    <p><span class="math display">\[
+        g^* = \frac{\eta\alpha L - \rho(1-s_A)}{\sigma(1-s_A) + \alpha},
+    \qquad r^* = \frac{\sigma\eta\alpha L + \alpha\rho}{\sigma(1-s_A) +
+    \alpha}.
+    \]</span></p>
+    <p>Both <span class="math inline">\(g^*\)</span> and <span
+    class="math inline">\(r^*\)</span> <strong>rise</strong> relative to
+    the no-subsidy benchmark. The subsidy lowers the effective labor
+    cost of R&amp;D firms, who hire more researchers. Hence <span
     class="math inline">\(L_A\)</span> rises, <span
     class="math inline">\(\dot{A} = \eta A L_A\)</span> rises, and so
     does steady-state growth <span class="math inline">\(g\)</span>. The
@@ -1641,11 +2623,12 @@ Endogenous growth models build a consistent framework for economic growth driven
     <details class="box red">
     <summary>Key Result: Social Planner's Solution</summary>
     <div class="box-content">
-    [ g_S =
-    <span class="math display">\[\begin{cases} \dfrac{\eta L -
-    \rho}{\sigma} &amp; \text{for } \eta L &gt; \rho \\[4pt] 0 &amp;
-    \text{for } \eta L \leq \rho \end{cases}\]</span>
-    <p>] The decentralized growth rate is : <span
+    <p><span class="math display">\[
+        g_S = \begin{cases} \dfrac{\eta L - \rho}{\sigma} &amp;
+    \text{for } \eta L &gt; \rho \\[4pt] 0 &amp; \text{for } \eta L \leq
+    \rho \end{cases}
+    \]</span></p>
+    <p>The decentralized growth rate is <strong>too low</strong>: <span
     class="math inline">\(g_M &lt; g_S\)</span>.</p>
     </div>
     </details>
@@ -1653,12 +2636,32 @@ Endogenous growth models build a consistent framework for economic growth driven
     id="two-market-imperfections-related-to-rd."><span
     class="header-section-number">3.3.15.1</span> Two market
     imperfections related to R&amp;D.</h4>
-    <p>Both imperfections imply that R&amp;D investment is in the
-    decentralized equilibrium. The deviation of the decentralized
-    solution from the first-best calls for , e.g., R&amp;D subsidies
-    (such as the wage subsidy <span class="math inline">\(s_A\)</span>
-    analyzed above) that align <span class="math inline">\(g_M\)</span>
-    with <span class="math inline">\(g_S\)</span>.</p>
+    <ul>
+    <li><strong>Intertemporal knowledge spill-over effect.</strong> Each
+    new blueprint raises future research productivity (recall the
+    R&amp;D technology <span class="math inline">\(\dot{A} = \eta A
+    L_A\)</span>). This social benefit is <strong>not reflected in the
+    market price</strong> <span class="math inline">\(p_A =
+    \pi/r\)</span>: the inventor only captures the private profit
+    stream, not the contribution to future researchers’
+    productivity.</li>
+    <li><strong>Incomplete appropriation of consumer surplus.</strong>
+    The typical intermediate-goods producer realizes <strong>monopoly
+    profits</strong> – this imperfection is in fact <em>necessary</em>
+    for market-based R&amp;D, since otherwise the blueprint would have
+    zero value. However, the monopolist <strong>cannot appropriate the
+    entire consumer surplus</strong>. Hence, again, the market price
+    <span class="math inline">\(p_A = \pi/r\)</span> falls short of the
+    social value of the blueprint.</li>
+    </ul>
+    <p>Both imperfections imply that R&amp;D investment is
+    <strong>suboptimally low</strong> in the decentralized equilibrium.
+    The deviation of the decentralized solution from the first-best
+    calls for <strong>government intervention</strong>, e.g., R&amp;D
+    subsidies (such as the wage subsidy <span
+    class="math inline">\(s_A\)</span> analyzed above) that align <span
+    class="math inline">\(g_M\)</span> with <span
+    class="math inline">\(g_S\)</span>.</p>
     <hr />
     <h1 data-number="4" id="methods"><span
     class="header-section-number">4</span> Methods</h1>
@@ -1670,19 +2673,20 @@ Endogenous growth models build a consistent framework for economic growth driven
     u(t)\bigr)\,\mathrm{d}t
         \quad \text{subject to} \quad
         \dot{x}(t) = g\bigl(x(t), u(t)\bigr), \quad x(0) \text{ given},
-    \end{equation}\]</span> we define the <span
-    class="math display">\[\begin{equation}
+    \end{equation}\]</span> we define the <strong>current-value
+    Hamiltonian</strong> <span class="math display">\[\begin{equation}
         \mathcal{H}(x, u, \lambda) = I(x, u) + \lambda\, g(x, u),
     \end{equation}\]</span> where <span
-    class="math inline">\(\lambda(t)\)</span> is the (the
-    continuous-time shadow value of the state <span
+    class="math inline">\(\lambda(t)\)</span> is the <em>costate
+    variable</em> (the continuous-time shadow value of the state <span
     class="math inline">\(x\)</span>). The necessary optimality
     conditions are <span class="math display">\[\begin{align}
         \mathcal{H}_u &amp;= 0, \label{eq:foc_u}\\
         \dot{x} &amp;= g(x, u), \label{eq:state}\\
         \dot{\lambda} &amp;= \rho\lambda - \mathcal{H}_x.
     \label{eq:costate}
-    \end{align}\]</span> Together with the (TVC) <span
+    \end{align}\]</span> Together with the <strong>transversality
+    condition</strong> (TVC) <span
     class="math display">\[\begin{equation}
         \lim_{t\to\infty} e^{-\rho t}\,\lambda(t)\,x(t) = 0,
     \end{equation}\]</span> these conditions pin down the unique optimal
@@ -1697,8 +2701,8 @@ Endogenous growth models build a consistent framework for economic growth driven
     = u(c) + \lambda(rk + w - c)\)</span>. The FOCs yield <span
     class="math inline">\(\lambda = u&#39;(c)\)</span> and <span
     class="math inline">\(\dot{\lambda} = \lambda(\rho - r)\)</span>,
-    which combine to give the continuous-time <span
-    class="math display">\[\begin{equation}
+    which combine to give the continuous-time <strong>Euler
+    equation</strong> <span class="math display">\[\begin{equation}
         \frac{\dot{c}}{c} = \frac{1}{\sigma}(r - \rho).
     \end{equation}\]</span> For the Ramsey model, replacing <span
     class="math inline">\(r\)</span> with the net marginal product of
@@ -1719,9 +2723,36 @@ Endogenous growth models build a consistent framework for economic growth driven
     class="math inline">\(\mathbf{z}\)</span> collects deviations of the
     variables from their steady-state values. The solution procedure has
     four steps.</p>
+    <ol type="1">
+    <li><strong>Find the eigenvalues.</strong> Solve <span
+    class="math inline">\(\det(A - \mu I) = 0\)</span> for the
+    eigenvalues <span class="math inline">\(\mu_1, \mu_2\)</span> of
+    <span class="math inline">\(A\)</span>.</li>
+    <li><strong>Find the eigenvectors.</strong> For each <span
+    class="math inline">\(\mu_i\)</span>, solve <span
+    class="math inline">\((A - \mu_i I)\mathbf{v}_i =
+    \mathbf{0}\)</span> for the eigenvector <span
+    class="math inline">\(\mathbf{v}_i\)</span>.</li>
+    <li><strong>Write the general solution.</strong> <span
+    class="math display">\[\begin{equation}
+               \mathbf{z}(t) = \alpha_1\, e^{\mu_1 t}\,\mathbf{v}_1
+                              + \alpha_2\, e^{\mu_2 t}\,\mathbf{v}_2.
+           \end{equation}\]</span></li>
+    <li><strong>Apply boundary conditions.</strong> Use the initial
+    condition <span class="math inline">\(\mathbf{z}(0)\)</span> and any
+    terminal/transversality condition to determine <span
+    class="math inline">\(\alpha_1, \alpha_2\)</span>.</li>
+    </ol>
     <h4 data-number="4.2.0.1" id="stability."><span
     class="header-section-number">4.2.0.1</span> Stability.</h4>
-    The nature of the eigenvalues determines local dynamics:
+    <p>The nature of the eigenvalues determines local dynamics:</p>
+    <ul>
+    <li>If all eigenvalues have <em>negative</em> real parts, the steady
+    state is <strong>locally stable</strong> (a node or spiral).</li>
+    <li>If the eigenvalues have <em>opposite</em> signs (<span
+    class="math inline">\(\mu_1 &lt; 0 &lt; \mu_2\)</span>), the steady
+    state is a <strong>saddle point</strong>.</li>
+    </ul>
     <h4 data-number="4.2.0.2"
     id="saddle-path-stability-in-economic-models."><span
     class="header-section-number">4.2.0.2</span> Saddle-path stability
@@ -1733,15 +2764,15 @@ Endogenous growth models build a consistent framework for economic growth driven
     optimal solution therefore requires setting the coefficient on the
     unstable eigenvector to zero (<span class="math inline">\(\alpha_2 =
     0\)</span>, corresponding to <span class="math inline">\(\mu_2 &gt;
-    0\)</span>). This selects the unique — the only trajectory
-    compatible with the TVC — and pins down the correct initial value
-    <span class="math inline">\(c_0\)</span>.</p>
+    0\)</span>). This selects the unique <strong>saddle path</strong> —
+    the only trajectory compatible with the TVC — and pins down the
+    correct initial value <span class="math inline">\(c_0\)</span>.</p>
     <h2 data-number="4.3" id="random"><span
     class="header-section-number">4.3</span> random</h2>
     <p>inelastically labor supply means a vertival line in a w - L plot
     (same L for any w). -&gt; this applies to ramsey, solow, romer</p>
-    <pre><code>\item \textit{Stock vs.\ flow:} A stock is measured at a given point in time; a flow is measured over a period of time. GDP is a flow (``GDP in 2024 was \dots&#39;&#39;); the amount of money in your pocket right now is a stock.
-\item \textit{Side note on labor productivity:} \textit{Average} productivity of labor is $Y/L$, while \textit{marginal} productivity of labor is $\partial Y/\partial L$.</code></pre>
+    <pre><code>\item *Stock vs.\ flow:* A stock is measured at a given point in time; a flow is measured over a period of time. GDP is a flow (``GDP in 2024 was \dots&#39;&#39;); the amount of money in your pocket right now is a stock.
+\item *Side note on labor productivity:* *Average* productivity of labor is $Y/L$, while *marginal* productivity of labor is $\partial Y/\partial L$.</code></pre>
 
     <div class="footer">
       Advanced Macroeconomics &middot; Lecture Notes &middot; <a href="https://github.com/Julian3141/macro-notes">Source on GitHub</a>
