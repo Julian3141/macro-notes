@@ -61,8 +61,8 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Newsreader', Georgia, serif;
   font-optical-sizing: auto;
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 20px;
+  line-height: 1.75;
   color: var(--text);
   background: var(--bg);
   transition: background 0.3s ease, color 0.3s ease;
@@ -410,8 +410,16 @@ mjx-container { color: var(--text); }
 figure { margin: 2rem 0; text-align: center; }
 
 figure img, .main img {
-  max-width: 100%;
-  border-radius: 4px;
+  max-width: 75%;
+  max-height: 420px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  padding: 0.5rem;
+  background: var(--bg-elevated);
   box-shadow: var(--shadow);
 }
 

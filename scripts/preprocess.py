@@ -278,16 +278,76 @@ def strip_preamble(text):
 
 
 # ---------------------------------------------------------------------------
+# Text formatting: \textbf, \textit, \emph
+# ---------------------------------------------------------------------------
+
+def convert_text_formatting(text):
+    """Convert LaTeX text commands to Markdown equivalents.
+    Applied multiple times to handle one level of nesting."""
+    for _ in range(4):
+        text = re.sub(r'\\textbf\{([^{}]*)\}',  r'**\1**', text)
+        text = re.sub(r'\\textit\{([^{}]*)\}',  r'*\1*',   text)
+        text = re.sub(r'\\emph\{([^{}]*)\}',    r'*\1*',   text)
+        text = re.sub(r'\\underline\{([^{}]*)\}', r'\1',   text)
+    return text
+
+
+# ---------------------------------------------------------------------------
+# Lists: \begin{itemize} / \begin{enumerate}
+# ---------------------------------------------------------------------------
+
+def convert_lists(text):
+    """Convert LaTeX list environments to Markdown lists.
+    Multiple passes handle nesting (innermost first)."""
+
+    def make_list(m):
+        env     = m.group(1)
+        content = m.group(2)
+        prefix  = '1. ' if env == 'enumerate' else '- '
+        parts   = re.split(r'\\item\b', content)
+        lines   = []
+        for i, part in enumerate(parts):
+            if i == 0:
+                stripped = part.strip()
+                if stripped:
+                    lines.append(stripped)
+                continue
+            item_text = part.strip()
+            if item_text:
+                lines.append(prefix + item_text)
+        return '\n\n' + '\n'.join(lines) + '\n\n'
+
+    pattern = re.compile(
+        r'\\begin\{(itemize|enumerate)\}(.*?)\\end\{(?:itemize|enumerate)\}',
+        re.DOTALL
+    )
+    prev = None
+    while prev != text:
+        prev = text
+        text = pattern.sub(make_list, text)
+    return text
+
+
+# ---------------------------------------------------------------------------
+# Math: \[...\] → $$...$$ so Pandoc doesn't mangle it
+# ---------------------------------------------------------------------------
+
+def convert_display_math(text):
+    """Replace \[...\] with $$...$$ (more reliably parsed by Pandoc Markdown)."""
+    def replace(m):
+        inner = m.group(1)
+        return '\n\n$$' + inner + '$$\n\n'
+    return re.sub(r'\\\[(.*?)\\\]', replace, text, flags=re.DOTALL)
+
+
+# ---------------------------------------------------------------------------
 # Misc cleanup
 # ---------------------------------------------------------------------------
 
 def clean_misc(text):
     text = re.sub(r'\\(noindent|clearpage|cleardoublepage|hfill)\b', '', text)
     text = re.sub(r'\\(vspace|hspace)\{[^}]*\}', '', text)
-    # Size commands: just drop the command name; leave the braces/content for Pandoc
     text = re.sub(r'\\(scriptsize|footnotesize|small|large|Large|huge|Huge)\b', '', text)
-    # Don't touch \\ — it may be inside math (\begin{cases}, align rows)
-    # Collapse excessive blank lines
     text = re.sub(r'\n{4,}', '\n\n\n', text)
     return text
 
@@ -311,6 +371,9 @@ def main():
     text = strip_preamble(text)
     text = convert_tikz(text)
     text = convert_figures(text)
+    text = convert_text_formatting(text)
+    text = convert_lists(text)
+    text = convert_display_math(text)
     text = convert_tcolorboxes(text)
     text = convert_sections(text)
     text = clean_misc(text)
